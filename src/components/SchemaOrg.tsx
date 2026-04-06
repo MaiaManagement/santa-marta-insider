@@ -20,10 +20,10 @@ export function ArticleSchema({ title, description, datePublished, author, url, 
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Santa Marta Insider',
+      name: 'Ruta Colombia',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://santamartainsider.com/logo.png',
+        url: 'https://ruta-colombia.com/logo.png',
       },
     },
     mainEntityOfPage: {
@@ -31,7 +31,7 @@ export function ArticleSchema({ title, description, datePublished, author, url, 
       '@id': url,
     },
     articleSection: category,
-    inLanguage: 'es-CO',
+    inLanguage: 'en',
   };
 
   return (
@@ -46,10 +46,10 @@ export function WebSiteSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Santa Marta Insider',
-    description: 'Tu guía definitiva del Caribe colombiano. Noticias, guías y recursos para vivir, invertir y disfrutar Santa Marta.',
-    url: 'https://santamartainsider.com',
-    inLanguage: 'es-CO',
+    name: 'Ruta Colombia',
+    description: 'Your definitive guide to Colombia. News, guides, and resources for living, investing, and enjoying Colombia.',
+    url: 'https://ruta-colombia.com',
+    inLanguage: 'en',
     publisher: {
       '@type': 'Organization',
       name: 'The Maia Group',
@@ -57,7 +57,7 @@ export function WebSiteSchema() {
     },
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://santamartainsider.com/search?q={search_term_string}',
+      target: 'https://ruta-colombia.com/search?q={search_term_string}',
       'query-input': 'required name=search_term_string',
     },
   };

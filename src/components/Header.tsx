@@ -14,10 +14,10 @@ export default function Header() {
         <div className="flex items-center justify-between py-3 border-b border-gray-100">
           <Link href="/" className="flex flex-col items-start">
             <span className="text-2xl font-serif font-bold text-gray-900 tracking-tight">
-              Santa Marta <span className="text-teal-600">Insider</span>
+              Ruta <span className="text-teal-600">Colombia</span>
             </span>
             <span className="text-xs text-gray-500 font-sans uppercase tracking-widest">
-              Tu guía del Caribe colombiano
+              Your guide to Colombia
             </span>
           </Link>
           <div className="hidden md:flex items-center gap-4">

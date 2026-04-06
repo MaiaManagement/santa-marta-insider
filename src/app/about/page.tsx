@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Acerca de Santa Marta Insider',
-  description: 'Santa Marta Insider es la guía digital de The Maia Group para el Caribe colombiano.',
+  title: 'About Ruta Colombia',
+  description: 'Ruta Colombia is The Maia Group\'s digital guide for travelers and investors in Colombia.',
 };
 
 export default function AboutPage() {
@@ -14,11 +14,11 @@ export default function AboutPage() {
 
       <div className="prose max-w-none text-gray-700">
         <p>
-          <strong>Santa Marta Insider</strong> es el hub de contenido digital de{' '}
+          <strong>Ruta Colombia</strong> es el hub de contenido digital de{' '}
           <a href="https://the-maia-group.com" target="_blank" rel="noopener noreferrer">
             The Maia Group
           </a>{' '}
-          — tu fuente de confianza para todo lo que necesitas saber sobre vivir, trabajar, invertir y disfrutar Santa Marta y el Caribe colombiano.
+          — tu fuente de confianza para todo lo que necesitas saber sobre vivir, trabajar, invertir y disfrutar Colombia, empezando por Medellín y Santa Marta.
         </p>
 
         <p>
@@ -32,7 +32,7 @@ export default function AboutPage() {
 
         <h2>El ecosistema Maia Group</h2>
         <p>
-          Santa Marta Insider forma parte del ecosistema de empresas de The Maia Group en Colombia:
+          Ruta Colombia forma parte del ecosistema de empresas de The Maia Group en Colombia:
         </p>
         <ul>
           <li>

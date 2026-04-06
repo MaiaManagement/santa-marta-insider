@@ -26,10 +26,10 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <h3 className="text-white font-serif font-bold text-xl mb-3">
-              Santa Marta <span className="text-teal-400">Insider</span>
+              Ruta <span className="text-teal-400">Colombia</span>
             </h3>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Tu guía definitiva del Caribe colombiano. Noticias, guías y recursos para vivir, invertir y disfrutar Santa Marta.
+              Your definitive guide to Colombia. News, guides, and resources for living, investing, and enjoying Colombia.
             </p>
             <p className="text-xs text-gray-500 mt-4">
               Parte del ecosistema{' '}
@@ -111,7 +111,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-gray-500">
-            © {year} Santa Marta Insider — The Maia Group. Todos los derechos reservados.
+            © {year} Ruta Colombia — The Maia Group. Todos los derechos reservados.
           </p>
           <div className="flex gap-4 text-xs text-gray-500">
             <Link href="/about/" className="hover:text-gray-400">Política de privacidad</Link>

@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${cat.name} — Santa Marta`,
     description: cat.description,
     openGraph: {
-      title: `${cat.name} en Santa Marta | Santa Marta Insider`,
+      title: `${cat.name} en Colombia | Ruta Colombia`,
       description: cat.description,
     },
   };

@@ -6,28 +6,28 @@ import { WebSiteSchema } from '@/components/SchemaOrg';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://santamartainsider.com'),
+  metadataBase: new URL('https://ruta-colombia.com'),
   title: {
-    default: 'Santa Marta Insider — Tu guía del Caribe colombiano',
-    template: '%s | Santa Marta Insider',
+    default: 'Ruta Colombia — Your Guide to Colombia',
+    template: '%s | Ruta Colombia',
   },
-  description: 'Tu guía definitiva del Caribe colombiano. Guías de viaje, bienes raíces, gastronomía, legal y más sobre Santa Marta, Colombia.',
-  keywords: ['Santa Marta', 'Colombia', 'Caribe', 'guía', 'bienes raíces', 'turismo', 'vida en Colombia'],
-  authors: [{ name: 'Santa Marta Insider' }],
+  description: 'Your definitive guide to Colombia. Travel guides, real estate, food & drink, legal, and more — starting with Medellín and Santa Marta.',
+  keywords: ['Colombia', 'Medellín', 'Santa Marta', 'travel guide', 'real estate', 'tourism', 'expat Colombia'],
+  authors: [{ name: 'Ruta Colombia' }],
   creator: 'The Maia Group',
-  publisher: 'Santa Marta Insider',
+  publisher: 'Ruta Colombia',
   openGraph: {
     type: 'website',
-    locale: 'es_CO',
-    url: 'https://santamartainsider.com',
-    siteName: 'Santa Marta Insider',
-    title: 'Santa Marta Insider — Tu guía del Caribe colombiano',
-    description: 'Tu guía definitiva del Caribe colombiano. Guías de viaje, bienes raíces, gastronomía, legal y más.',
+    locale: 'en_US',
+    url: 'https://ruta-colombia.com',
+    siteName: 'Ruta Colombia',
+    title: 'Ruta Colombia — Your Guide to Colombia',
+    description: 'Your definitive guide to Colombia. Travel guides, real estate, food & drink, legal, and more.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Santa Marta Insider',
-    description: 'Tu guía definitiva del Caribe colombiano.',
+    title: 'Ruta Colombia',
+    description: 'Your definitive guide to Colombia.',
   },
   robots: {
     index: true,
@@ -48,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
+    <html lang="en">
       <head>
         <WebSiteSchema />
         <link rel="icon" href="/favicon.ico" />

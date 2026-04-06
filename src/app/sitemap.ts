@@ -3,7 +3,7 @@ import { getAllArticles } from '@/lib/articles';
 import { categories } from '@/lib/categories';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://santamartainsider.com';
+  const baseUrl = 'https://ruta-colombia.com';
 
   const articles = getAllArticles();
   const articleUrls = articles.map((article) => ({

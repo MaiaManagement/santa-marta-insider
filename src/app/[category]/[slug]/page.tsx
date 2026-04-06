@@ -49,7 +49,7 @@ export default function ArticlePage({ params }: Props) {
     .filter((a) => a.slug !== article.slug)
     .slice(0, 3);
 
-  const articleUrl = `https://santamartainsider.com/${article.category}/${article.slug}/`;
+  const articleUrl = `https://ruta-colombia.com/${article.category}/${article.slug}/`;
 
   return (
     <>

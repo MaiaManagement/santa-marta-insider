@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://santamartainsider.com/sitemap.xml
+Sitemap: https://ruta-colombia.com/sitemap.xml

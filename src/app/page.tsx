@@ -105,9 +105,9 @@ export default function HomePage() {
       {/* About strip */}
       <section className="bg-teal-50 border-t border-teal-100 py-12">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="font-serif text-2xl font-bold text-teal-900 mb-3">Sobre Santa Marta Insider</h2>
+          <h2 className="font-serif text-2xl font-bold text-teal-900 mb-3">Sobre Ruta Colombia</h2>
           <p className="text-teal-700 leading-relaxed mb-6">
-            Santa Marta Insider es la guía digital de The Maia Group para el Caribe colombiano. Combinamos el conocimiento local con experiencia profesional en bienes raíces, derecho, gastronomía y más.
+            Ruta Colombia es la guía digital de The Maia Group para viajeros e inversores en Colombia. Combinamos el conocimiento local con experiencia profesional en bienes raíces, derecho, gastronomía y más.
           </p>
           <Link
             href="/about/"
