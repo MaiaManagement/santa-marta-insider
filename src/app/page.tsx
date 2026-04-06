@@ -1,9 +1,24 @@
 import Link from 'next/link';
 import ArticleCard from '@/components/ArticleCard';
+import PhotoCarousel from '@/components/PhotoCarousel';
 import { getAllArticlesByCity, getFeaturedArticlesByCity, getAllArticles } from '@/lib/articles';
 import { categories } from '@/lib/categories';
 import { cities } from '@/lib/cities';
 import AdSense from '@/components/AdSense';
+
+const medellinSlides = [
+  { src: 'https://picsum.photos/seed/medellin-skyline/1200/600', alt: 'Medellín skyline', caption: 'Medellín — City of Eternal Spring' },
+  { src: 'https://picsum.photos/seed/el-poblado-medellin/1200/600', alt: 'El Poblado, Medellín', caption: 'El Poblado — vibrant expat neighbourhood' },
+  { src: 'https://picsum.photos/seed/medellin-metro-cable/1200/600', alt: 'Medellín cable car', caption: 'World-class public transit & innovation' },
+  { src: 'https://picsum.photos/seed/medellin-nightlife/1200/600', alt: 'Medellín at night', caption: 'Medellín after dark' },
+];
+
+const santaMartaSlides = [
+  { src: 'https://picsum.photos/seed/santa-marta-coast/1200/600', alt: 'Santa Marta coast', caption: "Santa Marta — Colombia's Caribbean gem" },
+  { src: 'https://picsum.photos/seed/tayrona-national-park/1200/600', alt: 'Tayrona National Park', caption: 'Tayrona National Park — untouched jungle meets the sea' },
+  { src: 'https://picsum.photos/seed/santa-marta-beach-hammock/1200/600', alt: 'Caribbean beach', caption: 'Crystal-clear Caribbean waters' },
+  { src: 'https://picsum.photos/seed/minca-sierra-nevada/1200/600', alt: 'Sierra Nevada mountains', caption: 'Minca & the Sierra Nevada — cool mountain escape' },
+];
 
 export default function HomePage() {
   const medellinArticles = getAllArticlesByCity('medellin');
@@ -88,33 +103,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* AdSense top banner */}
-      <div className="bg-white border-b border-gray-100 py-3">
-        <div className="max-w-7xl mx-auto px-4">
-          <AdSense slot="homepage-top" format="horizontal" />
-        </div>
-      </div>
-
-      {/* Medellín Featured Articles */}
-      {medellinFeatured.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 bg-violet-600 rounded-full" />
-              <h2 className="font-serif text-2xl font-bold text-gray-900">Featured: Medellín</h2>
-            </div>
-            <div className="h-px flex-1 bg-gray-200" />
-            <Link href="/medellin/" className="text-sm text-teal-600 hover:text-teal-700 font-medium whitespace-nowrap">
-              All Medellín →
-            </Link>
+      {/* Medellín section — carousel + featured articles */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="flex items-center gap-3 mb-5">
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 bg-violet-600 rounded-full" />
+            <h2 className="font-serif text-2xl font-bold text-gray-900">Medellín</h2>
           </div>
+          <div className="h-px flex-1 bg-gray-200" />
+          <Link href="/medellin/" className="text-sm text-teal-600 hover:text-teal-700 font-medium whitespace-nowrap">
+            All Medellín →
+          </Link>
+        </div>
+
+        {/* Medellín photo carousel */}
+        <div className="rounded-2xl overflow-hidden mb-8 shadow-md">
+          <PhotoCarousel slides={medellinSlides} className="h-64 md:h-80" />
+        </div>
+
+        {medellinFeatured.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {medellinFeatured.map((article) => (
               <ArticleCard key={article.slug} article={article} variant="featured" />
             ))}
           </div>
-        </section>
-      )}
+        )}
+      </section>
 
       {/* Categories grid */}
       <section className="bg-white py-12 border-y border-gray-100">
@@ -143,26 +157,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Santa Marta Featured */}
-      {santaMartaFeatured.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 bg-teal-600 rounded-full" />
-              <h2 className="font-serif text-2xl font-bold text-gray-900">Featured: Santa Marta</h2>
-            </div>
-            <div className="h-px flex-1 bg-gray-200" />
-            <Link href="/santa-marta/" className="text-sm text-teal-600 hover:text-teal-700 font-medium whitespace-nowrap">
-              All Santa Marta →
-            </Link>
+      {/* Santa Marta section — carousel + featured articles */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="flex items-center gap-3 mb-5">
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 bg-teal-600 rounded-full" />
+            <h2 className="font-serif text-2xl font-bold text-gray-900">Santa Marta</h2>
           </div>
+          <div className="h-px flex-1 bg-gray-200" />
+          <Link href="/santa-marta/" className="text-sm text-teal-600 hover:text-teal-700 font-medium whitespace-nowrap">
+            All Santa Marta →
+          </Link>
+        </div>
+
+        {/* Santa Marta photo carousel */}
+        <div className="rounded-2xl overflow-hidden mb-8 shadow-md">
+          <PhotoCarousel slides={santaMartaSlides} className="h-64 md:h-80" />
+        </div>
+
+        {santaMartaFeatured.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {santaMartaFeatured.slice(0, 3).map((article) => (
               <ArticleCard key={article.slug} article={article} variant="featured" />
             ))}
           </div>
-        </section>
-      )}
+        )}
+      </section>
 
       {/* Latest across Colombia */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

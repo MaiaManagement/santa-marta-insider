@@ -26,7 +26,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <h3 className="text-white font-serif font-bold text-xl mb-3">
-              The Colombian <span className="text-teal-400">Insider</span>
+              Ruta <span className="text-teal-400">Colombia</span>
             </h3>
             <p className="text-sm text-gray-400 leading-relaxed">
               Your definitive guide to living, working, investing, and exploring Colombia — written by local experts.

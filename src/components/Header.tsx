@@ -16,7 +16,7 @@ export default function Header() {
         <div className="flex items-center justify-between py-3 border-b border-gray-800">
           <Link href="/" className="flex flex-col items-start" onClick={() => setMenuOpen(false)}>
             <span className="text-2xl font-serif font-bold text-white tracking-tight leading-none">
-              The Colombian <span className="text-teal-400">Insider</span>
+              Ruta <span className="text-teal-400">Colombia</span>
             </span>
             <span className="text-xs text-gray-400 font-sans uppercase tracking-widest mt-0.5">
               Your definitive guide to living in Colombia

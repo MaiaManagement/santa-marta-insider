@@ -1,6 +1,17 @@
 import Link from 'next/link';
 import { ArticleMeta } from '@/lib/articles';
 import { getCategoryBySlug } from '@/lib/categories';
+import PhotoCarousel from '@/components/PhotoCarousel';
+
+// 3 deterministic photos per article based on slug + city
+function getArticleSlides(article: ArticleMeta) {
+  const base = `${article.city}-${article.slug}`;
+  return [
+    { src: `https://picsum.photos/seed/${base}-a/800/480`, alt: article.title },
+    { src: `https://picsum.photos/seed/${base}-b/800/480`, alt: `${article.title} — photo 2` },
+    { src: `https://picsum.photos/seed/${base}-c/800/480`, alt: `${article.title} — photo 3` },
+  ];
+}
 
 interface ArticleCardProps {
   article: ArticleMeta;
@@ -13,12 +24,14 @@ export default function ArticleCard({ article, variant = 'default' }: ArticleCar
 
   if (variant === 'featured') {
     return (
-      <Link href={href} className="group block bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow">
-        <div className="bg-gradient-to-br from-teal-500 to-teal-700 h-48 flex items-end p-6">
-          <span className="text-white/80 text-xs font-semibold uppercase tracking-widest">
+      <div className="group block bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow">
+        <div className="relative">
+          <PhotoCarousel slides={getArticleSlides(article)} className="h-48" />
+          <span className="absolute top-3 left-3 z-10 bg-black/50 backdrop-blur-sm text-white/90 text-xs font-semibold uppercase tracking-widest px-2 py-1 rounded-full">
             {cat?.name || article.category}
           </span>
         </div>
+        <Link href={href} className="block">
         <div className="p-6">
           <h2 className="font-serif font-bold text-xl text-gray-900 group-hover:text-teal-700 transition-colors leading-tight mb-3">
             {article.title}
@@ -33,7 +46,8 @@ export default function ArticleCard({ article, variant = 'default' }: ArticleCar
           </div>
         </div>
       </Link>
-    );
+    </div>
+  );
   }
 
   if (variant === 'compact') {
