@@ -3,13 +3,30 @@ import { ArticleMeta } from '@/lib/articles';
 import { getCategoryBySlug } from '@/lib/categories';
 import PhotoCarousel from '@/components/PhotoCarousel';
 
-// 3 deterministic photos per article based on slug + city
+const ARTICLE_PHOTOS: Record<string, [string, string, string]> = {
+  'medellin-best-neighborhoods-medellin-expats': ['6web5Gydi2g', 'Iqa-WlbNjqs', 'fbQzaqvx4YY'],
+  'medellin-cost-of-living-medellin-2026':       ['2RZJIMTfJkU', 'PMYCnEgvPK0', 'JvZ1paoSnHc'],
+  'medellin-things-to-do-el-poblado-medellin':   ['Iqa-WlbNjqs', 'ScWTdlHE1b0', '6web5Gydi2g'],
+  'santa-marta-costo-de-vida-santa-marta-2026':  ['OBhu9aAnm_4', 'gc5OYAll-rc', 'P41tKN3uZhw'],
+  'santa-marta-guia-barrios-santa-marta':         ['ZHQU92sMXuU', 'dMcDVaqVpFg', 'OBhu9aAnm_4'],
+  'santa-marta-guia-parque-tayrona':              ['gdtcSQi7B1E', 'gc5OYAll-rc', 'zANBBldletg'],
+  'santa-marta-mejores-restaurantes-santa-marta': ['SCbq6uKCyMY', 'P41tKN3uZhw', 'ZHQU92sMXuU'],
+  'santa-marta-visa-para-vivir-en-colombia':      ['yMhTgr2zdVM', '0NFDoeXGJso', 'PM95XBE1Xxk'],
+};
+
+const FALLBACK_PHOTOS: [string, string, string] = ['JvZ1paoSnHc', 'P41tKN3uZhw', 'gdtcSQi7B1E'];
+
+function unsplash(id: string, w = 800, h = 480) {
+  return `https://images.unsplash.com/photo-${id}?w=${w}&h=${h}&fit=crop&auto=format`;
+}
+
 function getArticleSlides(article: ArticleMeta) {
-  const base = `${article.city}-${article.slug}`;
+  const key = `${article.city}-${article.slug}`;
+  const [a, b, c] = ARTICLE_PHOTOS[key] ?? FALLBACK_PHOTOS;
   return [
-    { src: `https://picsum.photos/seed/${base}-a/800/480`, alt: article.title },
-    { src: `https://picsum.photos/seed/${base}-b/800/480`, alt: `${article.title} — photo 2` },
-    { src: `https://picsum.photos/seed/${base}-c/800/480`, alt: `${article.title} — photo 3` },
+    { src: unsplash(a), alt: article.title },
+    { src: unsplash(b), alt: `${article.title} — photo 2` },
+    { src: unsplash(c), alt: `${article.title} — photo 3` },
   ];
 }
 

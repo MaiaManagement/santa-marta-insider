@@ -7,17 +7,17 @@ import { cities } from '@/lib/cities';
 import AdSense from '@/components/AdSense';
 
 const medellinSlides = [
-  { src: 'https://picsum.photos/seed/medellin-skyline/1200/600', alt: 'Medellín skyline', caption: 'Medellín — City of Eternal Spring' },
-  { src: 'https://picsum.photos/seed/el-poblado-medellin/1200/600', alt: 'El Poblado, Medellín', caption: 'El Poblado — vibrant expat neighbourhood' },
-  { src: 'https://picsum.photos/seed/medellin-metro-cable/1200/600', alt: 'Medellín cable car', caption: 'World-class public transit & innovation' },
-  { src: 'https://picsum.photos/seed/medellin-nightlife/1200/600', alt: 'Medellín at night', caption: 'Medellín after dark' },
+  { src: 'https://images.unsplash.com/photo-JvZ1paoSnHc?w=1200&h=600&fit=crop&auto=format', alt: 'Medellín skyline', caption: 'Medellín — City of Eternal Spring' },
+  { src: 'https://images.unsplash.com/photo-Iqa-WlbNjqs?w=1200&h=600&fit=crop&auto=format', alt: 'El Poblado, Medellín', caption: 'El Poblado — vibrant expat neighbourhood' },
+  { src: 'https://images.unsplash.com/photo-ScWTdlHE1b0?w=1200&h=600&fit=crop&auto=format', alt: 'Medellín cable car', caption: 'World-class public transit & innovation' },
+  { src: 'https://images.unsplash.com/photo-PMYCnEgvPK0?w=1200&h=600&fit=crop&auto=format', alt: 'Medellín at night', caption: 'Medellín after dark' },
 ];
 
 const santaMartaSlides = [
-  { src: 'https://picsum.photos/seed/santa-marta-coast/1200/600', alt: 'Santa Marta coast', caption: "Santa Marta — Colombia's Caribbean gem" },
-  { src: 'https://picsum.photos/seed/tayrona-national-park/1200/600', alt: 'Tayrona National Park', caption: 'Tayrona National Park — untouched jungle meets the sea' },
-  { src: 'https://picsum.photos/seed/santa-marta-beach-hammock/1200/600', alt: 'Caribbean beach', caption: 'Crystal-clear Caribbean waters' },
-  { src: 'https://picsum.photos/seed/minca-sierra-nevada/1200/600', alt: 'Sierra Nevada mountains', caption: 'Minca & the Sierra Nevada — cool mountain escape' },
+  { src: 'https://images.unsplash.com/photo-gc5OYAll-rc?w=1200&h=600&fit=crop&auto=format', alt: 'Santa Marta coast', caption: "Santa Marta — Colombia's Caribbean gem" },
+  { src: 'https://images.unsplash.com/photo-gdtcSQi7B1E?w=1200&h=600&fit=crop&auto=format', alt: 'Tayrona National Park', caption: 'Tayrona National Park — untouched jungle meets the sea' },
+  { src: 'https://images.unsplash.com/photo-P41tKN3uZhw?w=1200&h=600&fit=crop&auto=format', alt: 'Caribbean beach', caption: 'Crystal-clear Caribbean waters' },
+  { src: 'https://images.unsplash.com/photo-M7JWrcfo67k?w=1200&h=600&fit=crop&auto=format', alt: 'Sierra Nevada mountains', caption: 'Minca & the Sierra Nevada — cool mountain escape' },
 ];
 
 export default function HomePage() {
