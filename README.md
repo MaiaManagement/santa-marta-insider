@@ -1,6 +1,6 @@
-# Santa Marta Insider
+# Ruta Colombia
 
-Content hub / magazine site about Santa Marta and Colombia — part of The Maia Group ecosystem.
+Content hub / magazine site about Colombia — part of The Maia Group ecosystem.
 
 Built with Next.js 14 (App Router), Tailwind CSS, MDX articles, and static export for Netlify.
 

@@ -15,6 +15,7 @@ export interface ArticleMeta {
   tags?: string[];
   metaTitle?: string;
   metaDescription?: string;
+  lang?: string;
 }
 
 export interface Article extends ArticleMeta {
@@ -47,6 +48,7 @@ function readArticlesFromDir(dir: string, city: string): ArticleMeta[] {
         tags: data.tags || [],
         metaTitle: data.metaTitle || data.title,
         metaDescription: data.metaDescription || data.excerpt,
+        lang: data.lang || 'en',
       } as ArticleMeta;
     });
 }
@@ -82,6 +84,7 @@ export function getArticleByCityAndSlug(city: string, slug: string): Article | n
     tags: data.tags || [],
     metaTitle: data.metaTitle || data.title,
     metaDescription: data.metaDescription || data.excerpt,
+    lang: data.lang || 'en',
     content,
   };
 }

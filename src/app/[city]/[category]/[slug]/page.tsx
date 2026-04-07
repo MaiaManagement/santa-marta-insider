@@ -83,7 +83,7 @@ export default function ArticlePage({ params }: Props) {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Article */}
-          <article className="lg:col-span-2">
+          <article className="lg:col-span-2" lang={article.lang || 'en'}>
             {/* Header */}
             <div className="mb-8">
               {cat && (
