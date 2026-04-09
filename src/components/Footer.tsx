@@ -113,8 +113,8 @@ export default function Footer() {
             © {year} Ruta Colombia — The Maia Group. All rights reserved.
           </p>
           <div className="flex gap-4 text-xs text-gray-500">
-            <Link href="/about/" className="hover:text-gray-400 transition-colors">Privacy Policy</Link>
-            <Link href="/about/" className="hover:text-gray-400 transition-colors">Terms of Use</Link>
+            <Link href="/privacy/" className="hover:text-gray-400 transition-colors">Privacy Policy</Link>
+            <Link href="/terms/" className="hover:text-gray-400 transition-colors">Terms of Use</Link>
           </div>
         </div>
       </div>

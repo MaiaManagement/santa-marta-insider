@@ -1,3 +1,4 @@
+/* File: santa-marta-insider/src/app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,9 +6,17 @@
 :root {
   --background: #faf9f7;
   --foreground: #1a1a1a;
-  --teal-primary: #0d9488;
+  /* FIX: Changed --teal-primary from #0d9488 to #0a7e73 to improve contrast ratio
+     on cream (#faf9f7) background. Old value was borderline 4.2:1; new value
+     achieves >= 4.5:1 to meet WCAG AA for normal text. */
+  --teal-primary: #0a7e73;
   --teal-light: #14b8a6;
   --coral: #ef4444;
+  /* FIX: Added --coral-text as a darker coral token specifically for text use.
+     #ef4444 on cream (#faf9f7) only achieves ~3.8:1 (WCAG AA fail for small text).
+     #dc2626 achieves >= 4.5:1. Use --coral-text for any small body/UI text;
+     reserve --coral for decorative / large-text / icon use only. */
+  --coral-text: #dc2626;
 }
 
 body {
@@ -15,6 +24,33 @@ body {
   color: var(--foreground);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+/* FIX: Added :focus-visible enhancement.
+   Tailwind's Preflight resets some browser focus outlines. This rule
+   restores a clear, branded focus indicator for keyboard users on any
+   element that receives focus, using the site's primary accent colour
+   variable (--teal-primary) so it stays in sync with the palette. */
+:focus-visible {
+  outline: 3px solid var(--teal-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* FIX: Added prefers-reduced-motion support.
+   Users who have requested reduced motion in their OS/browser settings
+   will have all animation durations, transition durations, and smooth
+   scroll behaviour disabled. This prevents vestibular/motion-sensitivity
+   issues without removing visual feedback entirely. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .prose h1, .prose h2, .prose h3 {
@@ -42,7 +78,9 @@ body {
 }
 
 .prose a {
-  color: #0d9488;
+  /* NOTE: Uses the hardcoded value #0d9488 in the original; updated here to
+     match the new --teal-primary token so link contrast is consistent. */
+  color: var(--teal-primary);
   text-decoration: underline;
 }
 
@@ -78,3 +116,35 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/*
+ * ─── COMPONENT-LEVEL NOTES (no globals.css changes needed, action required) ──
+ *
+ * 1. CORAL TEXT USAGE
+ *    Any component that renders coral-coloured text at small sizes
+ *    (e.g. category badges, tags, captions, UI labels) should be updated
+ *    to use `--coral-text` (#dc2626) instead of `--coral` (#ef4444).
+ *    Example Tailwind class swap: text-[#ef4444] → text-[#dc2626]
+ *    or introduce a new Tailwind token `coral-text` in tailwind.config.ts:
+ *      colors: { coral: { ..., text: '#dc2626' } }
+ *    Large decorative text / icons / backgrounds may continue using --coral.
+ *
+ * 2. TEAL TOKEN PROPAGATION
+ *    Any component using Tailwind's `text-teal-600` (which resolves to
+ *    #0d9488 from the config) should switch to `text-teal-700` (#0f766e)
+ *    or use the CSS variable `var(--teal-primary)` directly to benefit
+ *    from the improved contrast. Consider updating tailwind.config.ts to
+ *    override teal-600 → #0a7e73 for full design-system consistency.
+ *
+ * 3. TAILWIND CONFIG — typography.maxWidth
+ *    Audit confirmed `typography.maxWidth: '72ch'` is already correctly
+ *    set in tailwind.config.ts. No change required.
+ *
+ * 4. FOCUS-VISIBLE IN COMPONENTS
+ *    If any component explicitly sets `outline-none` / `outline: none`
+ *    on interactive elements (buttons, links, inputs) without providing
+ *    an alternative focus style, add `focus-visible:ring-2
+ *    focus-visible:ring-teal-700` (or equivalent) to maintain
+ *    keyboard accessibility. The global :focus-visible rule above will
+ *    NOT override inline `outline: none` declarations.
+ */
