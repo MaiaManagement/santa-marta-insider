@@ -1,3 +1,4 @@
+```css
 /* File: santa-marta-insider/src/app/globals.css */
 @tailwind base;
 @tailwind components;
@@ -51,6 +52,42 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ─── Article thumbnail image fixes ─────────────────────────────────────────
+   - object-fit: cover ensures images fill their container without distortion.
+   - background-color provides a visible placeholder when the image fails to
+     load, replacing the broken-icon with a neutral grey tile.
+   - display: block removes the inline bottom gap browsers add to <img>.
+   These rules apply to all img elements inside article/card components.
+   Component-level width/height constraints should be set via Tailwind classes
+   on the wrapping element (e.g. h-48 w-full) so this rule knows the
+   available space to fill.
+*/
+.article-thumbnail,
+.article-card img,
+.thumbnail-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Neutral placeholder colour shown while image loads or if it 404s */
+  background-color: #e5e7eb; /* Tailwind gray-200 */
+}
+
+/* Generic fallback for any img that fails to load anywhere on the site */
+img {
+  /* Prevent broken-icon from showing; the alt text remains accessible */
+  color: transparent; /* hides the alt text broken-icon chrome */
+}
+
+img::before {
+  /* Overlay placeholder when the image resource fails */
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  background-color: #e5e7eb;
 }
 
 .prose h1, .prose h2, .prose h3 {
@@ -147,4 +184,21 @@ body {
  *    focus-visible:ring-teal-700` (or equivalent) to maintain
  *    keyboard accessibility. The global :focus-visible rule above will
  *    NOT override inline `outline: none` declarations.
+ *
+ * 5. ARTICLE THUMBNAIL IMAGES
+ *    Wrap <img> in a container with a fixed or relative height and set
+ *    `position: relative; overflow: hidden;` on the wrapper so the
+ *    placeholder ::before pseudo-element fills it correctly.
+ *    Add className="article-thumbnail" (or "thumbnail-img") to the <img>
+ *    element, plus loading="lazy" and a descriptive alt attribute.
+ *    Example:
+ *      <div className="relative overflow-hidden h-48 w-full rounded-t-xl bg-gray-200">
+ *        <img
+ *          src={article.thumbnail}
+ *          alt={`Cover image for ${article.title}`}
+ *          loading="lazy"
+ *          className="article-thumbnail"
+ *        />
+ *      </div>
  */
+```

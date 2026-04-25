@@ -2,6 +2,7 @@
   publish = "."
   command = ""
 
+# ── Security headers ──────────────────────────────────────────────────────────
 [[headers]]
   for = "/*"
   [headers.values]
@@ -18,3 +19,198 @@
   for = "/*.js"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+
+# ── 301 redirects: old santamartainsider.com URL structures ──────────────────
+# These paths existed on the old site and may be indexed under ruta-colombia.com
+# if the domain was pointing here before the full rebrand.
+# Preserves Google juice by redirecting old paths to the closest new equivalents.
+
+# Old article pages → closest new equivalent
+[[redirects]]
+  from = "/things-to-do/guia-parque-tayrona/"
+  to   = "/blog/parque-tayrona-como-llegar.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/things-to-do/guia-parque-tayrona"
+  to   = "/blog/parque-tayrona-como-llegar.html"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/legal/visa-para-vivir-en-colombia/"
+  to   = "https://maia-legal.com"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/legal/visa-para-vivir-en-colombia"
+  to   = "https://maia-legal.com"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/food-drink/mejores-restaurantes-santa-marta/"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/food-drink/mejores-restaurantes-santa-marta"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/real-estate/costo-de-vida-santa-marta-2026/"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/real-estate/costo-de-vida-santa-marta-2026"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/real-estate/guia-barrios-santa-marta/"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/real-estate/guia-barrios-santa-marta"
+  to   = "/"
+  status = 301
+  force  = true
+
+# Old category index pages → homepage
+[[redirects]]
+  from = "/things-to-do/"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/things-to-do"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/real-estate/"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/real-estate"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/legal/"
+  to   = "https://maia-legal.com"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/legal"
+  to   = "https://maia-legal.com"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/food-drink/"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/food-drink"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/jobs/"
+  to   = "https://maia-management.com"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/jobs"
+  to   = "https://maia-management.com"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/marine/"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/marine"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/community/"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/community"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/about/"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/about"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/contact/"
+  to   = "/"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "/contact"
+  to   = "/"
+  status = 301
+  force  = true
+
+# Old Next.js static output paths (out/) — prevent 404 if cached by crawlers
+[[redirects]]
+  from = "/out/*"
+  to   = "/"
+  status = 301
+  force  = true
+
+# Catch-all for any other old category/slug patterns
+[[redirects]]
+  from = "/:category/:slug/"
+  to   = "/blog/:slug.html"
+  status = 301
+  force  = false
+
+# 404 fallback
+[[redirects]]
+  from = "/*"
+  to   = "/index.html"
+  status = 404
