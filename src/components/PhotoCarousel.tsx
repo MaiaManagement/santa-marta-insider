@@ -83,14 +83,14 @@ export default function PhotoCarousel({
         <>
           <button
             onClick={() => go(current - 1)}
-            className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 text-white text-xl leading-none flex items-center justify-center transition-colors z-10"
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/40 hover:bg-black/70 text-white text-xl leading-none flex items-center justify-center transition-colors z-10"
             aria-label="Previous photo"
           >
             ‹
           </button>
           <button
             onClick={() => go(current + 1)}
-            className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 text-white text-xl leading-none flex items-center justify-center transition-colors z-10"
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/40 hover:bg-black/70 text-white text-xl leading-none flex items-center justify-center transition-colors z-10"
             aria-label="Next photo"
           >
             ›
@@ -105,11 +105,15 @@ export default function PhotoCarousel({
             <button
               key={i}
               onClick={() => go(i)}
-              className={`rounded-full transition-all ${
-                i === current ? 'w-4 h-1.5 bg-white' : 'w-1.5 h-1.5 bg-white/60'
-              }`}
+              className="p-2 flex items-center justify-center"
               aria-label={`Go to slide ${i + 1}`}
-            />
+            >
+              <span
+                className={`block rounded-full transition-all ${
+                  i === current ? 'w-4 h-1.5 bg-white' : 'w-1.5 h-1.5 bg-white/60'
+                }`}
+              />
+            </button>
           ))}
         </div>
       )}

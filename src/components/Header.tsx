@@ -73,7 +73,7 @@ export default function Header() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 text-gray-300 hover:text-white"
+            className="md:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-300 hover:text-white"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -121,7 +121,7 @@ export default function Header() {
               <Link
                 key={city.slug}
                 href={`/${city.slug}/`}
-                className="flex items-center gap-2 text-sm text-teal-400 font-semibold px-3 py-2 rounded-md hover:bg-gray-800"
+                className="flex items-center gap-2 text-sm text-teal-400 font-semibold px-3 py-3 rounded-md hover:bg-gray-800 min-h-[44px]"
                 onClick={() => setMenuOpen(false)}
               >
                 {city.name}
@@ -135,7 +135,7 @@ export default function Header() {
                 <Link
                   key={cat.slug}
                   href={`/medellin/${cat.slug}/`}
-                  className="text-sm text-gray-300 hover:text-white px-3 py-2 rounded-md hover:bg-gray-800"
+                  className="text-sm text-gray-300 hover:text-white px-3 py-3 rounded-md hover:bg-gray-800 min-h-[44px] flex items-center"
                   onClick={() => setMenuOpen(false)}
                 >
                   {cat.name}
@@ -144,10 +144,10 @@ export default function Header() {
             </nav>
           </div>
           <hr className="border-gray-700 my-3" />
-          <Link href="/about/" className="block text-sm text-gray-400 px-3 py-2 hover:text-white" onClick={() => setMenuOpen(false)}>
+          <Link href="/about/" className="block text-sm text-gray-400 px-3 py-3 hover:text-white min-h-[44px] flex items-center" onClick={() => setMenuOpen(false)}>
             About
           </Link>
-          <Link href="/contact/" className="block text-sm text-gray-400 px-3 py-2 hover:text-white" onClick={() => setMenuOpen(false)}>
+          <Link href="/contact/" className="block text-sm text-gray-400 px-3 py-3 hover:text-white min-h-[44px] flex items-center" onClick={() => setMenuOpen(false)}>
             Contact
           </Link>
         </div>
