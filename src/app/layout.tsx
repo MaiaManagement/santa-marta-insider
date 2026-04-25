@@ -79,6 +79,13 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-H5TBPYHRWE" strategy="afterInteractive" />
+        <Script id="ga4-init" strategy="afterInteractive">{`
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-H5TBPYHRWE');
+`}</Script>
       </head>
       <body className="bg-cream min-h-screen flex flex-col">
         <Script
@@ -87,13 +94,14 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2469196723812841"
           crossOrigin="anonymous"
         />
+        <Script src="/consent-banner.js" strategy="afterInteractive" />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
 
         {/* WhatsApp float button */}
         <a
-          href="https://wa.me/573226026526"
+          href="https://wa.me/19034598763"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat with us on WhatsApp"
