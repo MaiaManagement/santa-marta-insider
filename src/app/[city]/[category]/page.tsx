@@ -16,11 +16,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!category || !city) return {};
 
+  const title = `${category.name} in ${city.name}, Colombia`;
+  const description = `Expert ${category.name.toLowerCase()} guides for ${city.name}, Colombia — written by local professionals for expats, digital nomads, tourists, and investors.`;
   return {
-    title: `${category.name} in ${city.name}`,
-    description: `Expert guides on ${category.name.toLowerCase()} in ${city.name}, Colombia — for expats, digital nomads, and investors.`,
+    title,
+    description,
     alternates: {
       canonical: `https://ruta-colombia.com/${params.city}/${params.category}/`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://ruta-colombia.com/${params.city}/${params.category}/`,
+      type: 'website',
+      images: [{ url: 'https://ruta-colombia.com/og-image.jpg', width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
     },
   };
 }

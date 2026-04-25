@@ -3,6 +3,20 @@ import { getAllArticlesByCity } from '@/lib/articles';
 import { categories } from '@/lib/categories';
 import { cities } from '@/lib/cities';
 
+const blogPosts = [
+  { slug: 'colombia-10-dias-itinerario', lastMod: '2026-04-25' },
+  { slug: 'mejor-epoca-viajar-colombia', lastMod: '2026-04-25' },
+  { slug: 'salento-valle-cocora', lastMod: '2026-04-25' },
+  { slug: 'san-andres-que-hacer', lastMod: '2026-04-25' },
+  { slug: 'parque-tayrona-como-llegar', lastMod: '2026-04-25' },
+  { slug: 'itinerario-cartagena-3-dias', lastMod: '2026-04-25' },
+  { slug: 'eje-cafetero-que-hacer', lastMod: '2026-04-25' },
+  { slug: 'guatape-desde-medellin', lastMod: '2026-04-25' },
+  { slug: 'villa-de-leyva-que-ver', lastMod: '2026-04-25' },
+  { slug: 'cano-cristales-como-llegar', lastMod: '2026-04-25' },
+  { slug: 'bogota-3-dias-itinerario', lastMod: '2026-04-25' },
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://ruta-colombia.com';
 
@@ -31,6 +45,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
+  const blogUrls = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}.html`,
+    lastModified: new Date(post.lastMod),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
   return [
     {
       url: baseUrl,
@@ -50,8 +71,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.5,
     },
+    {
+      url: `${baseUrl}/privacy/`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/terms/`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
     ...cityUrls,
     ...cityCategoryUrls,
     ...articleUrls,
+    ...blogUrls,
   ];
 }

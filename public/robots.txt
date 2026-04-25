@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://ruta-colombia.com/sitemap.xml
+
+# Ruta Colombia — Colombia travel guide & expat resource
+# ruta-colombia.com

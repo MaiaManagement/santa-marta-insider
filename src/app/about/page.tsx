@@ -2,11 +2,18 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About Ruta Colombia',
+  title: 'About Ruta Colombia — Colombia Travel Guide & Expat Resource',
   description:
-    'Ruta Colombia is the digital content hub of The Maia Group — your trusted source for everything you need to live, work, invest, and explore Colombia.',
+    'Ruta Colombia is the definitive Colombia travel and expat guide, produced by The Maia Group. Expert local knowledge on living, working, investing, and exploring Colombia.',
   alternates: {
     canonical: 'https://ruta-colombia.com/about/',
+  },
+  openGraph: {
+    title: 'About Ruta Colombia — Colombia Travel Guide & Expat Resource',
+    description:
+      'Ruta Colombia is the definitive Colombia travel and expat guide, produced by The Maia Group. Expert local knowledge on living, working, investing, and exploring Colombia.',
+    url: 'https://ruta-colombia.com/about/',
+    type: 'website',
   },
 };
 

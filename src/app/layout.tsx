@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { WebSiteSchema } from '@/components/SchemaOrg';
+import { WebSiteSchema, TouristGuideSchema } from '@/components/SchemaOrg';
 import './globals.css';
 
 export const viewport: Viewport = {
@@ -17,38 +17,61 @@ export const metadata: Metadata = {
     'google-adsense-account': 'ca-pub-2469196723812841',
   },
   title: {
-    default: 'Ruta Colombia — Your Definitive Guide to Living in Colombia',
+    default: 'Ruta Colombia — Colombia Travel Guide & Expat Resource',
     template: '%s | Ruta Colombia',
   },
   description:
-    'Your definitive guide to living, working, investing, and exploring Colombia. Expert local coverage of Medellín, Santa Marta, and beyond — for expats, digital nomads, investors, and tourists.',
+    'Your definitive Colombia travel guide and expat resource. Expert local coverage of Medellín, Cartagena, Santa Marta, Bogotá, and beyond — for tourists, expats, digital nomads, and investors.',
   keywords: [
-    'Colombia',
-    'Medellín',
-    'Santa Marta',
+    'Colombia travel guide',
+    'Colombia tourism',
+    'living in Colombia',
     'expat Colombia',
     'digital nomad Colombia',
-    'invest in Colombia',
-    'living in Colombia',
-    'real estate Colombia',
-    'Colombia travel guide',
+    'things to do in Colombia',
+    'visit Colombia',
+    'Medellín travel guide',
+    'Cartagena travel guide',
+    'Santa Marta Colombia',
+    'Colombia real estate',
+    'Colombia visa guide',
+    'viaje Colombia',
+    'qué hacer en Colombia',
+    'guía de viaje Colombia',
+    'turismo Colombia',
   ],
   authors: [{ name: 'Ruta Colombia' }],
   creator: 'The Maia Group',
   publisher: 'Ruta Colombia',
+  alternates: {
+    canonical: 'https://ruta-colombia.com',
+    languages: {
+      'en': 'https://ruta-colombia.com',
+      'es': 'https://ruta-colombia.com',
+    },
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://ruta-colombia.com',
     siteName: 'Ruta Colombia',
-    title: 'Ruta Colombia — Your Definitive Guide to Living in Colombia',
+    title: 'Ruta Colombia — Colombia Travel Guide & Expat Resource',
     description:
-      'Expert guides on real estate, legal, food, jobs, and lifestyle across Colombia — written by local professionals.',
+      'Expert guides on things to do, real estate, legal, food, and lifestyle across Colombia — written by local professionals for tourists, expats, and digital nomads.',
+    images: [
+      {
+        url: 'https://ruta-colombia.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Ruta Colombia — Colombia Travel Guide & Expat Resource',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ruta Colombia',
-    description: 'Your definitive guide to living in Colombia.',
+    title: 'Ruta Colombia — Colombia Travel Guide & Expat Resource',
+    description: 'Your definitive guide to travelling, living, and investing in Colombia.',
+    images: ['https://ruta-colombia.com/og-image.jpg'],
   },
   robots: {
     index: true,
@@ -72,6 +95,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <WebSiteSchema />
+        <TouristGuideSchema />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

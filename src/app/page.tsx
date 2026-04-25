@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleCard from '@/components/ArticleCard';
 import PhotoCarousel from '@/components/PhotoCarousel';
@@ -5,6 +6,30 @@ import { getAllArticlesByCity, getFeaturedArticlesByCity, getAllArticles } from 
 import { categories } from '@/lib/categories';
 import { cities } from '@/lib/cities';
 import AdSense from '@/components/AdSense';
+
+export const metadata: Metadata = {
+  title: 'Ruta Colombia — Colombia Travel Guide & Expat Resource',
+  description:
+    'Your definitive Colombia travel guide. Expert city guides for Medellín, Cartagena, Santa Marta, Bogotá, Cali, and more — covering things to do, living costs, neighbourhoods, restaurants, and expat life.',
+  alternates: {
+    canonical: 'https://ruta-colombia.com/',
+  },
+  openGraph: {
+    title: 'Ruta Colombia — Colombia Travel Guide & Expat Resource',
+    description:
+      'Expert city guides for Medellín, Cartagena, Santa Marta, and Bogotá — things to do, living costs, neighbourhoods, restaurants, and expat tips.',
+    url: 'https://ruta-colombia.com/',
+    type: 'website',
+    images: [
+      {
+        url: 'https://ruta-colombia.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Ruta Colombia — Colombia Travel Guide',
+      },
+    ],
+  },
+};
 
 const medellinSlides = [
   { src: 'https://images.unsplash.com/photo-JvZ1paoSnHc?w=1200&h=600&fit=crop&auto=format', alt: 'Medellín skyline', caption: 'Medellín — City of Eternal Spring' },

@@ -11,14 +11,76 @@ interface Props {
   params: { city: string };
 }
 
+const cityMeta: Record<string, { title: string; description: string; ogImage?: string }> = {
+  medellin: {
+    title: 'Medellín Travel Guide — Things to Do, Expat Life & Living Costs',
+    description:
+      'The definitive Medellín travel guide. Discover the best neighbourhoods, restaurants, things to do, cost of living, and expat tips in Colombia\'s City of Eternal Spring.',
+    ogImage: 'https://ruta-colombia.com/og-medellin.jpg',
+  },
+  'santa-marta': {
+    title: 'Santa Marta Travel Guide — Beaches, Tayrona & Expat Life',
+    description:
+      'Your complete Santa Marta travel guide. Explore Tayrona National Park, the best beaches, neighbourhoods, restaurants, and what it\'s like to live on Colombia\'s Caribbean coast.',
+    ogImage: 'https://ruta-colombia.com/og-santa-marta.jpg',
+  },
+  bogota: {
+    title: 'Bogotá Travel Guide — Things to Do, Neighbourhoods & Expat Tips',
+    description:
+      'The essential Bogotá travel guide. Best things to do, top neighbourhoods, restaurants, nightlife, and practical advice for expats and tourists in Colombia\'s capital at 2,600m.',
+    ogImage: 'https://ruta-colombia.com/og-bogota.jpg',
+  },
+  cartagena: {
+    title: 'Cartagena Travel Guide — Old Town, Beaches & Expat Life',
+    description:
+      'Your definitive Cartagena travel guide. Explore the UNESCO walled city, Caribbean beaches, top restaurants, and expat living tips in one of Latin America\'s most iconic cities.',
+    ogImage: 'https://ruta-colombia.com/og-cartagena.jpg',
+  },
+  cali: {
+    title: 'Cali Travel Guide — Salsa, Things to Do & Living in Cali',
+    description:
+      'Discover Cali, Colombia\'s salsa capital. Best things to do, top neighbourhoods, restaurants, nightlife, and what it\'s like to live in the World Capital of Salsa.',
+    ogImage: 'https://ruta-colombia.com/og-cali.jpg',
+  },
+  barranquilla: {
+    title: 'Barranquilla Travel Guide — Carnival, Things to Do & Living Costs',
+    description:
+      'Your guide to Barranquilla, home of the world\'s second-largest carnival. Best things to do, restaurants, neighbourhoods, and cost of living in Colombia\'s Caribbean gateway.',
+    ogImage: 'https://ruta-colombia.com/og-barranquilla.jpg',
+  },
+  bucaramanga: {
+    title: 'Bucaramanga Travel Guide — Things to Do, Cost of Living & Expat Life',
+    description:
+      'Discover Bucaramanga, Colombia\'s best-kept secret. Best things to do, cost of living, parks, and why expats love this clean, affordable city in the Andes foothills.',
+    ogImage: 'https://ruta-colombia.com/og-bucaramanga.jpg',
+  },
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const city = cities.find((c) => c.slug === params.city);
   if (!city) return {};
+  const meta = cityMeta[params.city];
+  const title = meta?.title ?? `${city.name} Travel Guide — Colombia | Ruta Colombia`;
+  const description = meta?.description ?? `Your definitive guide to living, working, and exploring ${city.name}, Colombia.`;
+  const ogImage = meta?.ogImage ?? 'https://ruta-colombia.com/og-image.jpg';
   return {
-    title: city.name,
-    description: `Your definitive guide to living, working, and exploring ${city.name}, Colombia.`,
+    title,
+    description,
     alternates: {
       canonical: `https://ruta-colombia.com/${params.city}/`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://ruta-colombia.com/${params.city}/`,
+      type: 'website',
+      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [ogImage],
     },
   };
 }
