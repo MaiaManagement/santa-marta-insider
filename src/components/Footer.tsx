@@ -82,7 +82,8 @@ export default function Footer() {
                 { name: 'Maia Legal', url: 'https://maia-legal.com' },
                 { name: 'Maia Management', url: 'https://maia-management.com' },
                 { name: 'Mapaná Marine', url: 'https://mapana-marine.com' },
-                { name: 'Be Vida Botánicas', url: 'https://bevidabotanicas.com' },
+                { name: 'Be Vida Botánicas', url: 'https://be-vida.com' },
+                { name: 'El Sanatorio', url: 'https://el-sanatorio.com' },
                 { name: 'LlevaLleva', url: 'https://llevalleva.co' },
               ].map((brand) => (
                 <li key={brand.name}>
@@ -108,9 +109,30 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        {/* Santa Marta hospitality callout */}
+        <div className="border-t border-gray-800 mt-8 pt-6 pb-4 text-center">
+          <p className="text-xs text-gray-500">
+            While you&apos;re in Santa Marta —{' '}
+            <a href="https://el-sanatorio.com" target="_blank" rel="noopener noreferrer" className="text-teal-400 hover:text-teal-300 transition-colors">
+              El Sanatorio
+            </a>
+            {' '}(yakitori bar &amp; immersive horror experience) ·{' '}
+            <a href="https://be-vida.com" target="_blank" rel="noopener noreferrer" className="text-teal-400 hover:text-teal-300 transition-colors">
+              Be Vida Botánicas
+            </a>
+            {' '}(premium craft cocktails)
+          </p>
+        </div>
+
+        <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-gray-500">
             © {year} Ruta Colombia — The Maia Group. All rights reserved.
+          </p>
+          <p className="text-xs text-gray-500">
+            Work with us →{' '}
+            <a href="https://maia-management.com/empleo.html" target="_blank" rel="noopener noreferrer" className="text-teal-400 hover:text-teal-300 transition-colors">
+              Join the Maia team
+            </a>
           </p>
           <div className="flex gap-4 text-xs text-gray-500">
             <Link href="/privacy/" className="hover:text-gray-400 transition-colors">Privacy Policy</Link>
