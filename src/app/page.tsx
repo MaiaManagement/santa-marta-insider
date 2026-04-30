@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import ArticleCard from '@/components/ArticleCard';
 import PhotoCarousel from '@/components/PhotoCarousel';
 import { getAllArticlesByCity, getFeaturedArticlesByCity, getAllArticles } from '@/lib/articles';
@@ -32,31 +32,19 @@ export const metadata: Metadata = {
 };
 
 const medellinSlides = [
-  { src: 'https://images.unsplash.com/photo-JvZ1paoSnHc?w=1200&h=600&fit=crop&auto=format', alt: 'Medellín skyline', caption: 'Medellín — City of Eternal Spring' },
-  { src: 'https://images.unsplash.com/photo-Iqa-WlbNjqs?w=1200&h=600&fit=crop&auto=format', alt: 'El Poblado, Medellín', caption: 'El Poblado — vibrant expat neighbourhood' },
-  { src: 'https://images.unsplash.com/photo-ScWTdlHE1b0?w=1200&h=600&fit=crop&auto=format', alt: 'Medellín cable car', caption: 'World-class public transit & innovation' },
-  { src: 'https://images.unsplash.com/photo-PMYCnEgvPK0?w=1200&h=600&fit=crop&auto=format', alt: 'Medellín at night', caption: 'Medellín after dark' },
+  { src: '/images/medellin-valley.jpg', alt: 'Medellín skyline in the Aburrá Valley', caption: 'Medellín — City of Eternal Spring' },
 ];
 
 const santaMartaSlides = [
-  { src: 'https://images.unsplash.com/photo-gc5OYAll-rc?w=1200&h=600&fit=crop&auto=format', alt: 'Santa Marta coast', caption: "Santa Marta — Colombia's Caribbean gem" },
-  { src: 'https://images.unsplash.com/photo-gdtcSQi7B1E?w=1200&h=600&fit=crop&auto=format', alt: 'Tayrona National Park', caption: 'Tayrona National Park — untouched jungle meets the sea' },
-  { src: 'https://images.unsplash.com/photo-P41tKN3uZhw?w=1200&h=600&fit=crop&auto=format', alt: 'Caribbean beach', caption: 'Crystal-clear Caribbean waters' },
-  { src: 'https://images.unsplash.com/photo-M7JWrcfo67k?w=1200&h=600&fit=crop&auto=format', alt: 'Sierra Nevada mountains', caption: 'Minca & the Sierra Nevada — cool mountain escape' },
+  { src: '/images/tayrona-beach.jpg', alt: 'Tayrona National Park beach near Santa Marta', caption: 'Tayrona National Park — jungle meets the Caribbean' },
 ];
 
 const bogotaSlides = [
-  { src: 'https://images.unsplash.com/photo-1Bs68YXHgT8?w=1200&h=600&fit=crop&auto=format', alt: 'Bogotá skyline', caption: 'Bogotá — Colombia\'s sprawling capital at 2,600m' },
-  { src: 'https://images.unsplash.com/photo-nBuiLbz5VGQ?w=1200&h=600&fit=crop&auto=format', alt: 'La Candelaria, Bogotá', caption: 'La Candelaria — the colourful historic heart of the city' },
-  { src: 'https://images.unsplash.com/photo-qpKVCVDYE0c?w=1200&h=600&fit=crop&auto=format', alt: 'Bogotá Zona Rosa', caption: 'Zona Rosa & Chapinero — world-class dining and nightlife' },
-  { src: 'https://images.unsplash.com/photo-1oKxSKSOowE?w=1200&h=600&fit=crop&auto=format', alt: 'Bogotá graffiti art', caption: 'Street art capital of South America' },
+  { src: '/images/bogota-street.jpg', alt: 'Bogotá street and mountain skyline', caption: 'Bogotá — Colombia\'s capital at 2,600m' },
 ];
 
 const cartagenaSlides = [
-  { src: 'https://images.unsplash.com/photo-N_Y88TWmGwA?w=1200&h=600&fit=crop&auto=format', alt: 'Cartagena walled city', caption: 'Cartagena — a UNESCO World Heritage walled city' },
-  { src: 'https://images.unsplash.com/photo-kNJT9PRMroA?w=1200&h=600&fit=crop&auto=format', alt: 'Cartagena old town streets', caption: 'Old Town — pastel colonial streets and bougainvillea' },
-  { src: 'https://images.unsplash.com/photo-iN2BrG1BuQ4?w=1200&h=600&fit=crop&auto=format', alt: 'Cartagena Caribbean coast', caption: 'Crystal-clear Caribbean waters and island escapes' },
-  { src: 'https://images.unsplash.com/photo-R_rBpHmZrto?w=1200&h=600&fit=crop&auto=format', alt: 'Cartagena sunset', caption: 'Cartagena sunsets from the city walls' },
+  { src: '/images/cartagena-street.jpg', alt: 'Cartagena old town colonial street', caption: 'Cartagena — a UNESCO World Heritage walled city' },
 ];
 
 export default function HomePage() {

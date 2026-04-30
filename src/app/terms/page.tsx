@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/Link';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | Ruta Colombia',
+  title: 'Terms of Service',
   description: 'Terms of Service for Ruta Colombia. Please review our terms and conditions before using our website.',
   alternates: {
     canonical: 'https://ruta-colombia.com/terms/',

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ConsentScripts from '@/components/ConsentScripts';
 import { WebSiteSchema, TouristGuideSchema } from '@/components/SchemaOrg';
 import './globals.css';
 
@@ -97,28 +98,10 @@ export default function RootLayout({
         <WebSiteSchema />
         <TouristGuideSchema />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-        <Script src="/consent-banner.js" strategy="afterInteractive" />
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-H5TBPYHRWE" strategy="afterInteractive" />
-        <Script id="ga4-init" strategy="afterInteractive">{`
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-H5TBPYHRWE');
-`}</Script>
+        <Script src="/consent-banner.js?v=20260430-ruta" strategy="afterInteractive" />
       </head>
       <body className="bg-cream min-h-screen flex flex-col">
-        <Script
-          id="adsbygoogle-init"
-          strategy="afterInteractive"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2469196723812841"
-          crossOrigin="anonymous"
-        />
+        <ConsentScripts />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

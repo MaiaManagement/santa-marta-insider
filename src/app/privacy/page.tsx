@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/Link';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Ruta Colombia',
+  title: 'Privacy Policy',
   description: 'Privacy Policy for Ruta Colombia. Learn how we collect, use, and protect your personal information.',
   alternates: {
     canonical: 'https://ruta-colombia.com/privacy/',

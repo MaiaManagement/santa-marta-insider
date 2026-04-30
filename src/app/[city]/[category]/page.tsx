@@ -1,18 +1,30 @@
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { Metadata } from 'next';
 import ArticleCard from '@/components/ArticleCard';
 import { getArticlesByCityAndCategory } from '@/lib/articles';
 import { categories } from '@/lib/categories';
 import { cities } from '@/lib/cities';
 
+type CategoryParams = { city: string; category: string };
+
 interface Props {
-  params: { city: string; category: string };
+  params: Promise<CategoryParams>;
+}
+
+export function generateStaticParams() {
+  return cities.flatMap((city) =>
+    categories.map((category) => ({
+      city: city.slug,
+      category: category.slug,
+    })),
+  );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const category = categories.find((c) => c.slug === params.category);
-  const city = cities.find((c) => c.slug === params.city);
+  const { city: citySlug, category: categorySlug } = await params;
+  const category = categories.find((c) => c.slug === categorySlug);
+  const city = cities.find((c) => c.slug === citySlug);
 
   if (!category || !city) return {};
 
@@ -22,12 +34,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: {
-      canonical: `https://ruta-colombia.com/${params.city}/${params.category}/`,
+      canonical: `https://ruta-colombia.com/${citySlug}/${categorySlug}/`,
     },
     openGraph: {
       title,
       description,
-      url: `https://ruta-colombia.com/${params.city}/${params.category}/`,
+      url: `https://ruta-colombia.com/${citySlug}/${categorySlug}/`,
       type: 'website',
       images: [{ url: 'https://ruta-colombia.com/og-image.jpg', width: 1200, height: 630, alt: title }],
     },
@@ -39,8 +51,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function CategoryPage({ params }: Props) {
-  const { city: citySlug, category: categorySlug } = params;
+export default async function CategoryPage({ params }: Props) {
+  const { city: citySlug, category: categorySlug } = await params;
 
   const city = cities.find((c) => c.slug === citySlug);
   const category = categories.find((c) => c.slug === categorySlug);

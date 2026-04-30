@@ -1,18 +1,18 @@
-```tsx
-import Link from 'next/link';
+import Link from '@/components/Link';
 import Image from 'next/image';
-import type { Article } from '@/lib/articles';
+import type { ArticleMeta } from '@/lib/articles';
 
 interface Props {
-  article: Article;
-  variant?: 'default' | 'featured';
+  article: ArticleMeta;
+  variant?: 'default' | 'featured' | 'compact';
 }
 
 export default function ArticleCard({ article, variant = 'default' }: Props) {
   const href = `/${article.city}/${article.category}/${article.slug}/`;
+  const isCompact = variant === 'compact';
 
   return (
-    <article className="group flex flex-col bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden h-full">
+    <article className={`group flex flex-col bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden h-full ${isCompact ? 'mb-4 last:mb-0' : ''}`}>
       {/* ── Thumbnail ──────────────────────────────────────────────────────────
           FIX: Wrap the image in a fixed-height container with:
             - position: relative  (required for next/image fill layout)
@@ -25,7 +25,7 @@ export default function ArticleCard({ article, variant = 'default' }: Props) {
       ──────────────────────────────────────────────────────────────────────── */}
       <div
         className={`relative w-full overflow-hidden bg-gray-200 ${
-          variant === 'featured' ? 'h-52' : 'h-44'
+          variant === 'featured' ? 'h-52' : isCompact ? 'h-32' : 'h-44'
         }`}
       >
         {article.thumbnail ? (
@@ -40,7 +40,7 @@ export default function ArticleCard({ article, variant = 'default' }: Props) {
         ) : (
           // FIX: Explicit placeholder when no thumbnail src is provided at all
           <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
-            <span className="text-gray-400 text-sm font-medium">No image</span>
+            <span className="text-gray-700 text-sm font-medium">No image</span>
           </div>
         )}
 
@@ -53,7 +53,7 @@ export default function ArticleCard({ article, variant = 'default' }: Props) {
       </div>
 
       {/* ── Card body ─────────────────────────────────────────────────────── */}
-      <div className="flex flex-col flex-1 p-5">
+      <div className={`flex flex-col flex-1 ${isCompact ? 'p-4' : 'p-5'}`}>
         {/* City tag */}
         {article.city && (
           <span className="text-xs font-semibold uppercase tracking-wider text-teal-700 mb-1.5">
@@ -61,7 +61,7 @@ export default function ArticleCard({ article, variant = 'default' }: Props) {
           </span>
         )}
 
-        <h3 className="font-serif text-lg font-bold text-gray-900 leading-snug mb-2 line-clamp-2 group-hover:text-teal-700 transition-colors">
+        <h3 className={`font-serif font-bold text-gray-900 leading-snug mb-2 line-clamp-2 group-hover:text-teal-700 transition-colors ${isCompact ? 'text-base' : 'text-lg'}`}>
           <Link href={href} className="hover:underline">
             {article.title}
           </Link>
@@ -77,7 +77,7 @@ export default function ArticleCard({ article, variant = 'default' }: Props) {
           {article.date && (
             <time
               dateTime={article.date}
-              className="text-xs text-gray-400"
+              className="text-xs text-gray-600"
             >
               {new Date(article.date).toLocaleDateString('en-GB', {
                 day: 'numeric',
@@ -89,7 +89,7 @@ export default function ArticleCard({ article, variant = 'default' }: Props) {
           <Link
             href={href}
             className="text-xs font-semibold text-teal-700 hover:text-teal-600 transition-colors ml-auto"
-            aria-label={`Read article: ${article.title}`}
+            aria-label={`Read more: ${article.title}`}
           >
             Read more →
           </Link>
@@ -98,4 +98,3 @@ export default function ArticleCard({ article, variant = 'default' }: Props) {
     </article>
   );
 }
-```

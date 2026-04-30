@@ -1,216 +1,123 @@
 [build]
-  publish = "."
-  command = ""
+  command = "npm run build"
+  publish = "out"
 
-# ── Security headers ──────────────────────────────────────────────────────────
+[build.environment]
+  NODE_VERSION = "20"
+
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://www.google.com https://www.gstatic.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google; frame-src https://googleads.g.doubleclick.net https://www.google.com https://tpc.googlesyndication.com;"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
 
 [[headers]]
-  for = "/css/*"
+  for = "/_next/static/*"
   [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/*.js"
+  for = "/images/*"
   [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=31536000, immutable"
 
-# ── 301 redirects: old santamartainsider.com URL structures ──────────────────
-# These paths existed on the old site and may be indexed under ruta-colombia.com
-# if the domain was pointing here before the full rebrand.
-# Preserves Google juice by redirecting old paths to the closest new equivalents.
+[[headers]]
+  for = "/consent-banner.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
 
-# Old article pages → closest new equivalent
+[[redirects]]
+  from = "/blog/parque-tayrona-como-llegar.html"
+  to = "/santa-marta/things-to-do/guia-parque-tayrona/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/itinerario-cartagena-3-dias.html"
+  to = "/cartagena/things-to-do/things-to-do-cartagena/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/guatape-desde-medellin.html"
+  to = "/medellin/things-to-do/things-to-do-medellan/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/bogota-3-dias-itinerario.html"
+  to = "/bogota/things-to-do/things-to-do-bogota/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/santa-marta-vs-cartagena.html"
+  to = "/santa-marta/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/things-to-do/guia-parque-tayrona/"
-  to   = "/blog/parque-tayrona-como-llegar.html"
+  to = "/santa-marta/things-to-do/guia-parque-tayrona/"
   status = 301
-  force  = true
-
-[[redirects]]
-  from = "/things-to-do/guia-parque-tayrona"
-  to   = "/blog/parque-tayrona-como-llegar.html"
-  status = 301
-  force  = true
+  force = true
 
 [[redirects]]
   from = "/legal/visa-para-vivir-en-colombia/"
-  to   = "https://maia-legal.com"
+  to = "/santa-marta/legal/visa-para-vivir-en-colombia/"
   status = 301
-  force  = true
-
-[[redirects]]
-  from = "/legal/visa-para-vivir-en-colombia"
-  to   = "https://maia-legal.com"
-  status = 301
-  force  = true
+  force = true
 
 [[redirects]]
   from = "/food-drink/mejores-restaurantes-santa-marta/"
-  to   = "/"
+  to = "/santa-marta/food-drink/mejores-restaurantes-santa-marta/"
   status = 301
-  force  = true
-
-[[redirects]]
-  from = "/food-drink/mejores-restaurantes-santa-marta"
-  to   = "/"
-  status = 301
-  force  = true
+  force = true
 
 [[redirects]]
   from = "/real-estate/costo-de-vida-santa-marta-2026/"
-  to   = "/"
+  to = "/santa-marta/real-estate/costo-de-vida-santa-marta-2026/"
   status = 301
-  force  = true
-
-[[redirects]]
-  from = "/real-estate/costo-de-vida-santa-marta-2026"
-  to   = "/"
-  status = 301
-  force  = true
+  force = true
 
 [[redirects]]
   from = "/real-estate/guia-barrios-santa-marta/"
-  to   = "/"
+  to = "/santa-marta/real-estate/guia-barrios-santa-marta/"
   status = 301
-  force  = true
-
-[[redirects]]
-  from = "/real-estate/guia-barrios-santa-marta"
-  to   = "/"
-  status = 301
-  force  = true
-
-# Old category index pages → homepage
-[[redirects]]
-  from = "/things-to-do/"
-  to   = "/"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/things-to-do"
-  to   = "/"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/real-estate/"
-  to   = "/"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/real-estate"
-  to   = "/"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/legal/"
-  to   = "https://maia-legal.com"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/legal"
-  to   = "https://maia-legal.com"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/food-drink/"
-  to   = "/"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/food-drink"
-  to   = "/"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/jobs/"
-  to   = "https://maia-management.com"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/jobs"
-  to   = "https://maia-management.com"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/marine/"
-  to   = "/"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/marine"
-  to   = "/"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/community/"
-  to   = "/"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/community"
-  to   = "/"
-  status = 301
-  force  = true
-
-[[redirects]]
-  from = "/about/"
-  to   = "/"
-  status = 301
-  force  = true
+  force = true
 
 [[redirects]]
   from = "/about"
-  to   = "/"
+  to = "/about/"
   status = 301
-  force  = true
-
-[[redirects]]
-  from = "/contact/"
-  to   = "/"
-  status = 301
-  force  = true
 
 [[redirects]]
   from = "/contact"
-  to   = "/"
+  to = "/contact/"
   status = 301
-  force  = true
 
-# Old Next.js static output paths (out/) — prevent 404 if cached by crawlers
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy/"
+  status = 301
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms/"
+  status = 301
+
 [[redirects]]
   from = "/out/*"
-  to   = "/"
+  to = "/"
   status = 301
-  force  = true
-
-# Catch-all for any other old category/slug patterns
-[[redirects]]
-  from = "/:category/:slug/"
-  to   = "/blog/:slug.html"
-  status = 301
-  force  = false
-
-# 404 fallback
-[[redirects]]
-  from = "/*"
-  to   = "/index.html"
-  status = 404
+  force = true

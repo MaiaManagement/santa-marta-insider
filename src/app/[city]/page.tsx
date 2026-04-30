@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { notFound } from 'next/navigation';
 import ArticleCard from '@/components/ArticleCard';
 import PhotoCarousel from '@/components/PhotoCarousel';
@@ -7,8 +7,14 @@ import { getAllArticlesByCity } from '@/lib/articles';
 import { categories } from '@/lib/categories';
 import { cities } from '@/lib/cities';
 
+type CityParams = { city: string };
+
 interface Props {
-  params: { city: string };
+  params: Promise<CityParams>;
+}
+
+export function generateStaticParams() {
+  return cities.map((city) => ({ city: city.slug }));
 }
 
 const cityMeta: Record<string, { title: string; description: string; ogImage?: string }> = {
@@ -57,9 +63,10 @@ const cityMeta: Record<string, { title: string; description: string; ogImage?: s
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const city = cities.find((c) => c.slug === params.city);
+  const { city: citySlug } = await params;
+  const city = cities.find((c) => c.slug === citySlug);
   if (!city) return {};
-  const meta = cityMeta[params.city];
+  const meta = cityMeta[citySlug];
   const title = meta?.title ?? `${city.name} Travel Guide — Colombia | Ruta Colombia`;
   const description = meta?.description ?? `Your definitive guide to living, working, and exploring ${city.name}, Colombia.`;
   const ogImage = meta?.ogImage ?? 'https://ruta-colombia.com/og-image.jpg';
@@ -67,12 +74,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: {
-      canonical: `https://ruta-colombia.com/${params.city}/`,
+      canonical: `https://ruta-colombia.com/${citySlug}/`,
     },
     openGraph: {
       title,
       description,
-      url: `https://ruta-colombia.com/${params.city}/`,
+      url: `https://ruta-colombia.com/${citySlug}/`,
       type: 'website',
       images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
     },
@@ -88,28 +95,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // Carousel slide data per city (kept close to the page that uses it)
 const citySlides: Record<string, { src: string; alt: string; caption: string }[]> = {
   medellin: [
-    { src: 'https://images.unsplash.com/photo-JvZ1paoSnHc?w=1200&h=600&fit=crop&auto=format', alt: 'Medellín skyline at dusk', caption: 'Medellín — City of Eternal Spring' },
-    { src: 'https://images.unsplash.com/photo-Iqa-WlbNjqs?w=1200&h=600&fit=crop&auto=format', alt: 'El Poblado neighbourhood', caption: 'El Poblado — vibrant expat neighbourhood' },
-    { src: 'https://images.unsplash.com/photo-ScWTdlHE1b0?w=1200&h=600&fit=crop&auto=format', alt: 'Medellín cable car over the city', caption: 'World-class public transit & innovation' },
-    { src: 'https://images.unsplash.com/photo-PMYCnEgvPK0?w=1200&h=600&fit=crop&auto=format', alt: 'Medellín city lights at night', caption: 'Medellín after dark' },
+    { src: '/images/medellin-valley.jpg', alt: 'Medellín skyline in the Aburrá Valley', caption: 'Medellín — City of Eternal Spring' },
   ],
   'santa-marta': [
-    { src: 'https://images.unsplash.com/photo-gc5OYAll-rc?w=1200&h=600&fit=crop&auto=format', alt: 'Santa Marta coastline', caption: "Santa Marta — Colombia's Caribbean gem" },
-    { src: 'https://images.unsplash.com/photo-gdtcSQi7B1E?w=1200&h=600&fit=crop&auto=format', alt: 'Tayrona National Park jungle beach', caption: 'Tayrona National Park — untouched jungle meets the sea' },
-    { src: 'https://images.unsplash.com/photo-P41tKN3uZhw?w=1200&h=600&fit=crop&auto=format', alt: 'Crystal-clear Caribbean water', caption: 'Crystal-clear Caribbean waters' },
-    { src: 'https://images.unsplash.com/photo-M7JWrcfo67k?w=1200&h=600&fit=crop&auto=format', alt: 'Sierra Nevada mountains near Minca', caption: 'Minca & the Sierra Nevada — cool mountain escape' },
+    { src: '/images/tayrona-beach.jpg', alt: 'Tayrona National Park beach near Santa Marta', caption: 'Tayrona National Park — jungle meets the Caribbean' },
   ],
   bogota: [
-    { src: 'https://images.unsplash.com/photo-1Bs68YXHgT8?w=1200&h=600&fit=crop&auto=format', alt: 'Bogotá skyline viewed from the mountains', caption: "Bogotá — Colombia's sprawling capital at 2,600m" },
-    { src: 'https://images.unsplash.com/photo-nBuiLbz5VGQ?w=1200&h=600&fit=crop&auto=format', alt: 'La Candelaria colourful buildings', caption: 'La Candelaria — the colourful historic heart of the city' },
-    { src: 'https://images.unsplash.com/photo-qpKVCVDYE0c?w=1200&h=600&fit=crop&auto=format', alt: 'Zona Rosa Bogotá at night', caption: 'Zona Rosa & Chapinero — world-class dining and nightlife' },
-    { src: 'https://images.unsplash.com/photo-1oKxSKSOowE?w=1200&h=600&fit=crop&auto=format', alt: 'Large-scale graffiti mural in Bogotá', caption: 'Street art capital of South America' },
+    { src: '/images/bogota-street.jpg', alt: 'Bogotá street and mountain skyline', caption: "Bogotá — Colombia's capital at 2,600m" },
   ],
   cartagena: [
-    { src: 'https://images.unsplash.com/photo-N_Y88TWmGwA?w=1200&h=600&fit=crop&auto=format', alt: 'Cartagena walled city aerial view', caption: 'Cartagena — a UNESCO World Heritage walled city' },
-    { src: 'https://images.unsplash.com/photo-kNJT9PRMroA?w=1200&h=600&fit=crop&auto=format', alt: 'Colourful colonial street in Cartagena old town', caption: 'Old Town — pastel colonial streets and bougainvillea' },
-    { src: 'https://images.unsplash.com/photo-iN2BrG1BuQ4?w=1200&h=600&fit=crop&auto=format', alt: 'Caribbean coast near Cartagena', caption: 'Crystal-clear Caribbean waters and island escapes' },
-    { src: 'https://images.unsplash.com/photo-R_rBpHmZrto?w=1200&h=600&fit=crop&auto=format', alt: 'Sunset over Cartagena city walls', caption: 'Cartagena sunsets from the city walls' },
+    { src: '/images/cartagena-street.jpg', alt: 'Cartagena old town colonial street', caption: 'Cartagena — a UNESCO World Heritage walled city' },
   ],
 };
 
@@ -121,8 +116,8 @@ const cityTheme: Record<string, { gradient: string; accent: string }> = {
   cartagena:    { gradient: 'from-amber-900 via-amber-700 to-amber-600',  accent: 'bg-amber-600' },
 };
 
-export default function CityPage({ params }: Props) {
-  const { city: citySlug } = params;
+export default async function CityPage({ params }: Props) {
+  const { city: citySlug } = await params;
 
   const city = cities.find((c) => c.slug === citySlug);
   if (!city) notFound();

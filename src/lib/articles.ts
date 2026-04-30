@@ -13,6 +13,7 @@ export interface ArticleMeta {
   readingTime: string;
   featured?: boolean;
   tags?: string[];
+  thumbnail?: string;
   metaTitle?: string;
   metaDescription?: string;
 }
@@ -45,6 +46,7 @@ function readArticlesFromDir(dir: string, city: string): ArticleMeta[] {
         readingTime: data.readingTime || '5 min',
         featured: data.featured || false,
         tags: data.tags || [],
+        thumbnail: data.thumbnail || '',
         metaTitle: data.metaTitle || data.title,
         metaDescription: data.metaDescription || data.excerpt,
       } as ArticleMeta;
@@ -80,6 +82,7 @@ export function getArticleByCityAndSlug(city: string, slug: string): Article | n
     readingTime: data.readingTime || '5 min',
     featured: data.featured || false,
     tags: data.tags || [],
+    thumbnail: data.thumbnail || '',
     metaTitle: data.metaTitle || data.title,
     metaDescription: data.metaDescription || data.excerpt,
     content,

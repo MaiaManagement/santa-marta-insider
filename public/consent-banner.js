@@ -41,6 +41,12 @@
       localStorage.setItem(CONSENT_KEY, JSON.stringify(this.consent));
     }
 
+    announceConsent() {
+      window.dispatchEvent(new CustomEvent('ruta-consent-updated', {
+        detail: { ...this.consent }
+      }));
+    }
+
     setupGTM() {
       if (typeof window.gtag === 'undefined') {
         return;
@@ -57,6 +63,7 @@
       this.consent = { ...this.consent, ...settings };
       this.saveConsent();
       this.setupGTM();
+      this.announceConsent();
     }
 
     maybeShowBanner() {
@@ -231,6 +238,8 @@
       banner.updateConsent(settings);
     }
   };
+
+  banner.announceConsent();
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {

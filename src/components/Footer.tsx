@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import AdSense from '@/components/AdSense';
 import { categories } from '@/lib/categories';
 import { cities } from '@/lib/cities';

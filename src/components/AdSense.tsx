@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface AdSenseProps {
   slot: string;
@@ -11,17 +11,37 @@ interface AdSenseProps {
 
 declare global {
   interface Window {
-    adsbygoogle: unknown[];
+    adsbygoogle?: unknown[];
   }
 }
 
 export default function AdSense({ slot, format = 'auto', style, className }: AdSenseProps) {
+  const pushed = useRef(false);
+
   useEffect(() => {
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      // AdSense not loaded
-    }
+    const pushAd = () => {
+      const consentApi = (window as Window & {
+        MaiaConsent?: { getConsent?: () => { ad_storage?: boolean } };
+      }).MaiaConsent;
+
+      if (pushed.current || !consentApi?.getConsent?.().ad_storage || !window.adsbygoogle) return;
+
+      try {
+        window.adsbygoogle.push({});
+        pushed.current = true;
+      } catch {
+        // AdSense can reject duplicate or blocked slots; keep page rendering clean.
+      }
+    };
+
+    pushAd();
+    window.addEventListener('ruta-adsense-ready', pushAd);
+    window.addEventListener('ruta-consent-updated', pushAd);
+
+    return () => {
+      window.removeEventListener('ruta-adsense-ready', pushAd);
+      window.removeEventListener('ruta-consent-updated', pushAd);
+    };
   }, []);
 
   return (

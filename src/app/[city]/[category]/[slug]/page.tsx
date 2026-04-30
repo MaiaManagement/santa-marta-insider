@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { Metadata } from 'next';
-import { MDXRemote } from 'next-mdx-remote/rsc';
 import MaiaAd from '@/components/MaiaAd';
 import AdSense from '@/components/AdSense';
 import ArticleCard from '@/components/ArticleCard';
+import MarkdownContent from '@/components/MarkdownContent';
 import { ArticleSchema } from '@/components/SchemaOrg';
 import { cities, getCityBySlug } from '@/lib/cities';
 import { categories, getCategoryBySlug } from '@/lib/categories';
@@ -14,8 +14,10 @@ import {
   getArticlesByCityAndCategory,
 } from '@/lib/articles';
 
+type ArticleParams = { city: string; category: string; slug: string };
+
 interface Props {
-  params: { city: string; category: string; slug: string };
+  params: Promise<ArticleParams>;
 }
 
 export async function generateStaticParams() {
@@ -23,17 +25,19 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const article = getArticleByCityAndSlug(params.city, params.slug);
+  const { city, category, slug } = await params;
+  const article = getArticleByCityAndSlug(city, slug);
   if (!article) return {};
+  const title = (article.metaTitle || article.title).replace(/\s*\|\s*Ruta Colombia\s*$/, '');
 
   return {
-    title: article.metaTitle || article.title,
+    title,
     description: article.metaDescription || article.excerpt,
     alternates: {
-      canonical: `https://ruta-colombia.com/${params.city}/${params.category}/${params.slug}/`,
+      canonical: `https://ruta-colombia.com/${city}/${category}/${slug}/`,
     },
     openGraph: {
-      title: article.metaTitle || article.title,
+      title,
       description: article.metaDescription || article.excerpt,
       type: 'article',
       publishedTime: article.date,
@@ -41,23 +45,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: article.metaTitle || article.title,
+      title,
       description: article.metaDescription || article.excerpt,
     },
   };
 }
 
-export default function ArticlePage({ params }: Props) {
-  const city = getCityBySlug(params.city);
-  const article = getArticleByCityAndSlug(params.city, params.slug);
-  if (!city || !article || article.category !== params.category) notFound();
+export default async function ArticlePage({ params }: Props) {
+  const { city: citySlug, category: categorySlug, slug } = await params;
+  const city = getCityBySlug(citySlug);
+  const article = getArticleByCityAndSlug(citySlug, slug);
+  if (!city || !article || article.category !== categorySlug) notFound();
 
   const cat = getCategoryBySlug(article.category);
-  const relatedArticles = getArticlesByCityAndCategory(params.city, article.category)
+  const relatedArticles = getArticlesByCityAndCategory(citySlug, article.category)
     .filter((a) => a.slug !== article.slug)
     .slice(0, 3);
 
-  const articleUrl = `https://ruta-colombia.com/${params.city}/${article.category}/${article.slug}/`;
+  const articleUrl = `https://ruta-colombia.com/${citySlug}/${article.category}/${article.slug}/`;
 
   return (
     <>
@@ -75,9 +80,9 @@ export default function ArticlePage({ params }: Props) {
         <nav className="text-sm text-gray-500 mb-6">
           <Link href="/" className="hover:text-teal-600">Home</Link>
           <span className="mx-2">/</span>
-          <Link href={`/${params.city}/`} className="hover:text-teal-600">{city.name}</Link>
+          <Link href={`/${citySlug}/`} className="hover:text-teal-600">{city.name}</Link>
           <span className="mx-2">/</span>
-          <Link href={`/${params.city}/${article.category}/`} className="hover:text-teal-600">
+          <Link href={`/${citySlug}/${article.category}/`} className="hover:text-teal-600">
             {cat?.name || article.category}
           </Link>
           <span className="mx-2">/</span>
@@ -91,7 +96,7 @@ export default function ArticlePage({ params }: Props) {
             <div className="mb-8">
               {cat && (
                 <Link
-                  href={`/${params.city}/${article.category}/`}
+                  href={`/${citySlug}/${article.category}/`}
                   className="inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4 transition-opacity hover:opacity-80"
                   style={{ backgroundColor: cat.maia_brand.bgColor, color: cat.maia_brand.color }}
                 >
@@ -102,7 +107,7 @@ export default function ArticlePage({ params }: Props) {
                 {article.title}
               </h1>
               <p className="text-gray-500 text-lg leading-relaxed mb-6">{article.excerpt}</p>
-              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 pb-6 border-b border-gray-200">
+              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 pb-6 border-b border-gray-200">
                 <span>
                   By <strong className="text-gray-700">{article.author}</strong>
                 </span>
@@ -126,7 +131,7 @@ export default function ArticlePage({ params }: Props) {
 
             {/* MDX Content */}
             <div className="prose max-w-none">
-              <MDXRemote source={article.content} />
+              <MarkdownContent content={article.content} />
             </div>
 
             {/* Maia inline ad */}
