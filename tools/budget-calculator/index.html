@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Colombia Trip Budget Calculator | Ruta Colombia</title>
+  <meta name="description" content="Estimate Colombia travel and expat budgets by city, lifestyle, and stay length with live USD, EUR, and GBP conversions.">
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --panel: #171717;
+      --panel-soft: #202020;
+      --line: #2c2c2c;
+      --text: #f8fafc;
+      --muted: #b7c0c7;
+      --soft: #d9e4e8;
+      --accent: #14b8a6;
+      --accent-dark: #0f766e;
+      --accent-soft: rgba(20, 184, 166, 0.14);
+      --warning: #f59e0b;
+      --whatsapp: #25d366;
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(20, 184, 166, 0.18), rgba(15, 15, 15, 0) 38%),
+        linear-gradient(180deg, #0b0b0b 0%, var(--bg) 52%, #101713 100%);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 44px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: grid;
+      place-items: center;
+      color: #052f2b;
+      font-weight: 900;
+    }
+
+    .back-link {
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+      gap: 28px;
+      align-items: stretch;
+      margin-bottom: 28px;
+    }
+
+    .hero-copy {
+      padding: clamp(28px, 5vw, 56px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      background: rgba(15, 15, 15, 0.72);
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.32);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 16px;
+      color: #8df4e7;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0 0 18px;
+      font-family: Georgia, Cambria, "Times New Roman", serif;
+      font-size: clamp(2.35rem, 6vw, 5.2rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 690px;
+      margin: 0;
+      color: var(--soft);
+      font-size: clamp(1.03rem, 2vw, 1.22rem);
+    }
+
+    .rate-card {
+      border: 1px solid rgba(20, 184, 166, 0.35);
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(20, 184, 166, 0.15), rgba(23, 23, 23, 0.94));
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 260px;
+    }
+
+    .rate-card p {
+      margin: 0;
+    }
+
+    .rate-label {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .rate-value {
+      margin-top: 10px;
+      font-size: 2rem;
+      font-weight: 900;
+    }
+
+    .rate-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .mini-rate {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 12px;
+    }
+
+    .mini-rate span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .mini-rate strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.98rem;
+    }
+
+    .tool {
+      display: grid;
+      grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      background: rgba(23, 23, 23, 0.94);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.24);
+    }
+
+    .controls {
+      padding: 22px;
+      position: sticky;
+      top: 20px;
+    }
+
+    .panel-title {
+      margin: 0 0 16px;
+      font-size: 1.05rem;
+      font-weight: 850;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    label span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
+
+    select,
+    button {
+      font: inherit;
+    }
+
+    select {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #101010;
+      color: var(--text);
+      padding: 0 14px;
+      outline: none;
+    }
+
+    select:focus,
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid rgba(20, 184, 166, 0.55);
+      outline-offset: 3px;
+    }
+
+    .summary-box {
+      margin-top: 10px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(20, 184, 166, 0.24);
+      padding: 16px;
+    }
+
+    .summary-box p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .summary-box strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--text);
+      font-size: 1.55rem;
+      line-height: 1.1;
+    }
+
+    .results {
+      overflow: hidden;
+    }
+
+    .results-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .results-head h2 {
+      margin: 0;
+      font-size: clamp(1.25rem, 3vw, 1.8rem);
+      line-height: 1.1;
+    }
+
+    .share-button {
+      min-height: 44px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #052f2b;
+      cursor: pointer;
+      font-weight: 900;
+      padding: 0 18px;
+      white-space: nowrap;
+    }
+
+    .share-button:hover {
+      background: #2dd4bf;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 660px;
+    }
+
+    th,
+    td {
+      padding: 15px 22px;
+      border-bottom: 1px solid var(--line);
+      text-align: right;
+      vertical-align: middle;
+    }
+
+    th:first-child,
+    td:first-child {
+      text-align: left;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 0.76rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    td {
+      color: var(--soft);
+      font-weight: 700;
+    }
+
+    tbody tr:hover {
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    tfoot td {
+      color: var(--text);
+      font-size: 1.02rem;
+      font-weight: 900;
+      background: rgba(20, 184, 166, 0.08);
+    }
+
+    .currency-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      padding: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .currency-card {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      background: var(--panel-soft);
+      padding: 16px;
+    }
+
+    .currency-card small {
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .currency-card strong {
+      display: block;
+      margin-top: 7px;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      line-height: 1.1;
+    }
+
+    .note-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 22px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .cta {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      border: 1px solid rgba(37, 211, 102, 0.35);
+      border-radius: 8px;
+      background: rgba(37, 211, 102, 0.09);
+      padding: 22px;
+    }
+
+    .cta h2 {
+      margin: 0 0 4px;
+      font-size: 1.18rem;
+    }
+
+    .cta p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .cta a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border-radius: 8px;
+      background: var(--whatsapp);
+      color: #062a13;
+      font-weight: 900;
+      padding: 0 18px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      z-index: 20;
+      transform: translateX(-50%) translateY(120%);
+      border: 1px solid rgba(20, 184, 166, 0.35);
+      border-radius: 8px;
+      background: #082f2b;
+      color: #e6fffb;
+      padding: 12px 16px;
+      font-weight: 800;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.3);
+      transition: transform 180ms ease;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .tool,
+      .cta {
+        grid-template-columns: 1fr;
+      }
+
+      .controls {
+        position: static;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        width: min(100% - 22px, 1180px);
+        padding-top: 18px;
+      }
+
+      .topbar,
+      .results-head,
+      .note-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero-copy,
+      .rate-card,
+      .controls,
+      .results-head,
+      .currency-cards,
+      .cta {
+        padding: 18px;
+      }
+
+      .rate-grid,
+      .currency-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .share-button,
+      .cta a {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <nav class="topbar" aria-label="Page">
+      <a class="brand" href="/">
+        <span class="brand-mark">RC</span>
+        <span>Ruta Colombia</span>
+      </a>
+      <a class="back-link" href="/">Back to city guides</a>
+    </nav>
+
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Colombia planning tool</p>
+        <h1 id="page-title">Trip Budget Calculator</h1>
+        <p class="lead">Choose a city, lifestyle, and stay length to estimate a realistic Colombia budget in COP with live USD, EUR, and GBP equivalents.</p>
+      </div>
+
+      <aside class="rate-card" aria-label="Exchange rate status">
+        <div>
+          <p class="rate-label">Live rate baseline</p>
+          <p class="rate-value" id="rate-status">Loading rates...</p>
+          <p class="muted" id="rate-updated">Using ExchangeRate-API with 30 minute local cache.</p>
+        </div>
+        <div class="rate-grid" aria-label="Currency rates">
+          <div class="mini-rate"><span>USD</span><strong id="rate-usd">--</strong></div>
+          <div class="mini-rate"><span>EUR</span><strong id="rate-eur">--</strong></div>
+          <div class="mini-rate"><span>GBP</span><strong id="rate-gbp">--</strong></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="tool" aria-label="Budget calculator">
+      <form class="panel controls" id="calculator-form">
+        <h2 class="panel-title">Build your estimate</h2>
+
+        <label>
+          <span>City</span>
+          <select id="city">
+            <option value="medellin">Medellin</option>
+            <option value="bogota">Bogota</option>
+            <option value="cartagena">Cartagena</option>
+            <option value="santamarta">Santa Marta</option>
+            <option value="cali">Cali</option>
+            <option value="barranquilla">Barranquilla</option>
+            <option value="bucaramanga">Bucaramanga</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Lifestyle tier</span>
+          <select id="lifestyle">
+            <option value="backpacker">Budget Backpacker</option>
+            <option value="nomad">Digital Nomad</option>
+            <option value="comfortable">Comfortable Expat</option>
+            <option value="luxury">Luxury</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Duration</span>
+          <select id="duration">
+            <option value="0.5">2 weeks</option>
+            <option value="1" selected>1 month</option>
+            <option value="3">3 months</option>
+            <option value="6">6 months</option>
+            <option value="12">Permanent</option>
+          </select>
+        </label>
+
+        <div class="summary-box" aria-live="polite">
+          <p>Estimated total</p>
+          <strong id="sidebar-total">--</strong>
+          <p id="sidebar-context">Monthly estimate for Medellin, Digital Nomad.</p>
+        </div>
+      </form>
+
+      <article class="panel results">
+        <div class="results-head">
+          <div>
+            <h2 id="result-title">Medellin digital nomad budget</h2>
+            <p class="muted" id="result-subtitle">Monthly itemised estimate</p>
+          </div>
+          <button class="share-button" type="button" id="share-button">Share estimate</button>
+        </div>
+
+        <div class="currency-cards" aria-label="Converted totals">
+          <div class="currency-card"><small>USD total</small><strong id="usd-total">--</strong></div>
+          <div class="currency-card"><small>EUR total</small><strong id="eur-total">--</strong></div>
+          <div class="currency-card"><small>GBP total</small><strong id="gbp-total">--</strong></div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Monthly COP</th>
+                <th>Trip COP</th>
+                <th>Share</th>
+              </tr>
+            </thead>
+            <tbody id="breakdown-body"></tbody>
+            <tfoot>
+              <tr>
+                <td>Total</td>
+                <td id="monthly-total">--</td>
+                <td id="trip-total">--</td>
+                <td>100%</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div class="note-row">
+          <span id="cache-note">Exchange rates by ExchangeRate-API.</span>
+          <span>Planning figures only; actual rents and travel costs vary by season.</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <div>
+        <h2 id="cta-title">Planning your Colombia move?</h2>
+        <p>Chat with Maia about routes, housing, visas, and a realistic first-month setup budget.</p>
+      </div>
+      <a href="https://wa.me/573195962773?text=I%20used%20the%20Ruta%20Colombia%20budget%20calculator%20and%20want%20to%20discuss%20my%20move" target="_blank" rel="noopener noreferrer">Planning your Colombia move? Chat with Maia &rarr;</a>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Estimate copied to clipboard</div>
+
+  <script>
+    const costs = {
+      medellin: {
+        backpacker: { accommodation: 800000, food: 600000, transport: 150000, entertainment: 200000, coworking: 0, sim: 50000 },
+        nomad: { accommodation: 2200000, food: 1200000, transport: 250000, entertainment: 600000, coworking: 400000, sim: 50000 },
+        comfortable: { accommodation: 4000000, food: 2000000, transport: 350000, entertainment: 1200000, coworking: 0, sim: 80000 },
+        luxury: { accommodation: 8000000, food: 3500000, transport: 600000, entertainment: 2500000, coworking: 0, sim: 80000 }
+      },
+      bogota: { backpacker: { accommodation: 960000, food: 720000, transport: 180000, entertainment: 240000, coworking: 0, sim: 50000 }, nomad: { accommodation: 2640000, food: 1440000, transport: 300000, entertainment: 720000, coworking: 480000, sim: 50000 }, comfortable: { accommodation: 4800000, food: 2400000, transport: 420000, entertainment: 1440000, coworking: 0, sim: 80000 }, luxury: { accommodation: 9600000, food: 4200000, transport: 720000, entertainment: 3000000, coworking: 0, sim: 80000 } },
+      cartagena: { backpacker: { accommodation: 920000, food: 660000, transport: 150000, entertainment: 230000, coworking: 0, sim: 50000 }, nomad: { accommodation: 2530000, food: 1320000, transport: 250000, entertainment: 690000, coworking: 400000, sim: 50000 }, comfortable: { accommodation: 4600000, food: 2200000, transport: 350000, entertainment: 1380000, coworking: 0, sim: 80000 }, luxury: { accommodation: 9200000, food: 3850000, transport: 600000, entertainment: 2875000, coworking: 0, sim: 80000 } },
+      santamarta: { backpacker: { accommodation: 720000, food: 540000, transport: 135000, entertainment: 180000, coworking: 0, sim: 50000 }, nomad: { accommodation: 1980000, food: 1080000, transport: 225000, entertainment: 540000, coworking: 360000, sim: 50000 }, comfortable: { accommodation: 3600000, food: 1800000, transport: 315000, entertainment: 1080000, coworking: 0, sim: 80000 }, luxury: { accommodation: 7200000, food: 3150000, transport: 540000, entertainment: 2250000, coworking: 0, sim: 80000 } },
+      cali: { backpacker: { accommodation: 680000, food: 510000, transport: 128000, entertainment: 170000, coworking: 0, sim: 50000 }, nomad: { accommodation: 1870000, food: 1020000, transport: 213000, entertainment: 510000, coworking: 340000, sim: 50000 }, comfortable: { accommodation: 3400000, food: 1700000, transport: 298000, entertainment: 1020000, coworking: 0, sim: 80000 }, luxury: { accommodation: 6800000, food: 2975000, transport: 510000, entertainment: 2125000, coworking: 0, sim: 80000 } },
+      barranquilla: { backpacker: { accommodation: 750000, food: 555000, transport: 142000, entertainment: 185000, coworking: 0, sim: 50000 }, nomad: { accommodation: 2090000, food: 1110000, transport: 237000, entertainment: 555000, coworking: 370000, sim: 50000 }, comfortable: { accommodation: 3800000, food: 1850000, transport: 332000, entertainment: 1110000, coworking: 0, sim: 80000 }, luxury: { accommodation: 7600000, food: 3237000, transport: 555000, entertainment: 2312000, coworking: 0, sim: 80000 } },
+      bucaramanga: { backpacker: { accommodation: 710000, food: 525000, transport: 135000, entertainment: 175000, coworking: 0, sim: 50000 }, nomad: { accommodation: 1980000, food: 1050000, transport: 225000, entertainment: 525000, coworking: 350000, sim: 50000 }, comfortable: { accommodation: 3600000, food: 1750000, transport: 315000, entertainment: 1050000, coworking: 0, sim: 80000 }, luxury: { accommodation: 7200000, food: 3062000, transport: 525000, entertainment: 2187000, coworking: 0, sim: 80000 } }
+    };
+
+    const labels = {
+      city: {
+        medellin: "Medellin",
+        bogota: "Bogota",
+        cartagena: "Cartagena",
+        santamarta: "Santa Marta",
+        cali: "Cali",
+        barranquilla: "Barranquilla",
+        bucaramanga: "Bucaramanga"
+      },
+      lifestyle: {
+        backpacker: "Budget Backpacker",
+        nomad: "Digital Nomad",
+        comfortable: "Comfortable Expat",
+        luxury: "Luxury"
+      },
+      category: {
+        accommodation: "Accommodation",
+        food: "Food",
+        transport: "Transport",
+        entertainment: "Entertainment",
+        coworking: "Coworking",
+        sim: "Mobile data / SIM"
+      },
+      duration: {
+        "0.5": "2 weeks",
+        "1": "1 month",
+        "3": "3 months",
+        "6": "6 months",
+        "12": "Permanent annual view"
+      }
+    };
+
+    const fallbackRates = { USD: 0.000249, EUR: 0.000232, GBP: 0.000199 };
+    const cacheKey = "rutaBudgetRates:v1";
+    const cacheMs = 30 * 60 * 1000;
+    let exchangeRates = fallbackRates;
+    let rateSource = "fallback";
+    let lastEstimate = null;
+
+    const formatCOP = (n) => new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(n);
+    const formatCurrency = (n, currency) => new Intl.NumberFormat(undefined, { style: "currency", currency, maximumFractionDigits: 0 }).format(n);
+    const qs = (selector) => document.querySelector(selector);
+
+    async function loadRates() {
+      const cached = readCachedRates();
+      if (cached) {
+        exchangeRates = cached.rates;
+        rateSource = "cached";
+        updateRateUi(cached.updatedAt);
+        render();
+      }
+
+      try {
+        const response = await fetch("https://open.er-api.com/v6/latest/COP", { cache: "no-store" });
+        if (!response.ok) throw new Error("Rate request failed");
+        const data = await response.json();
+        if (!data.rates || !data.rates.USD || !data.rates.EUR || !data.rates.GBP) throw new Error("Missing rates");
+        exchangeRates = {
+          USD: data.rates.USD,
+          EUR: data.rates.EUR,
+          GBP: data.rates.GBP
+        };
+        const updatedAt = data.time_last_update_utc || new Date().toUTCString();
+        sessionStorage.setItem(cacheKey, JSON.stringify({ rates: exchangeRates, updatedAt, savedAt: Date.now() }));
+        rateSource = "live";
+        updateRateUi(updatedAt);
+        render();
+      } catch (error) {
+        rateSource = cached ? "cached" : "fallback";
+        updateRateUi(cached ? cached.updatedAt : null);
+      }
+    }
+
+    function readCachedRates() {
+      try {
+        const raw = sessionStorage.getItem(cacheKey);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        if (!parsed.savedAt || Date.now() - parsed.savedAt > cacheMs) return null;
+        return parsed;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    async function setDefaultCurrencyHint() {
+      try {
+        const response = await fetch("https://ipapi.co/json/");
+        if (!response.ok) return;
+        const data = await response.json();
+        const euroCountries = new Set(["AT", "BE", "CY", "EE", "FI", "FR", "DE", "GR", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PT", "SK", "SI", "ES"]);
+        const preferred = data.country_code === "GB" ? "GBP" : euroCountries.has(data.country_code) ? "EUR" : "USD";
+        document.body.dataset.preferredCurrency = preferred;
+      } catch (error) {
+        document.body.dataset.preferredCurrency = "USD";
+      }
+    }
+
+    function updateRateUi(updatedAt) {
+      const sourceLabel = rateSource === "live" ? "Live" : rateSource === "cached" ? "Cached" : "Fallback";
+      qs("#rate-status").textContent = `${sourceLabel} COP rates`;
+      qs("#rate-usd").textContent = `1 COP = ${exchangeRates.USD.toFixed(6)} USD`;
+      qs("#rate-eur").textContent = `1 COP = ${exchangeRates.EUR.toFixed(6)} EUR`;
+      qs("#rate-gbp").textContent = `1 COP = ${exchangeRates.GBP.toFixed(6)} GBP`;
+      const dateText = updatedAt ? new Date(updatedAt).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) : "using conservative fallback rates";
+      qs("#rate-updated").textContent = `Exchange rates by ExchangeRate-API. ${sourceLabel} data: ${dateText}.`;
+      qs("#cache-note").textContent = `Exchange rates by ExchangeRate-API. ${sourceLabel} conversion data.`;
+    }
+
+    function getEstimate() {
+      const city = qs("#city").value;
+      const lifestyle = qs("#lifestyle").value;
+      const months = Number(qs("#duration").value);
+      const monthlyItems = costs[city][lifestyle];
+      const monthlyTotal = Object.values(monthlyItems).reduce((sum, value) => sum + value, 0);
+      const tripTotal = Math.round(monthlyTotal * months);
+      return { city, lifestyle, months, monthlyItems, monthlyTotal, tripTotal };
+    }
+
+    function render() {
+      const estimate = getEstimate();
+      lastEstimate = estimate;
+      const cityLabel = labels.city[estimate.city];
+      const styleLabel = labels.lifestyle[estimate.lifestyle];
+      const durationLabel = labels.duration[String(estimate.months)];
+
+      qs("#result-title").textContent = `${cityLabel} ${styleLabel.toLowerCase()} budget`;
+      qs("#result-subtitle").textContent = `${durationLabel} based on monthly Colombia cost benchmarks`;
+      qs("#sidebar-total").textContent = formatCOP(estimate.tripTotal);
+      qs("#sidebar-context").textContent = `${durationLabel} estimate for ${cityLabel}, ${styleLabel}.`;
+      qs("#monthly-total").textContent = formatCOP(estimate.monthlyTotal);
+      qs("#trip-total").textContent = formatCOP(estimate.tripTotal);
+
+      qs("#usd-total").textContent = formatCurrency(estimate.tripTotal * exchangeRates.USD, "USD");
+      qs("#eur-total").textContent = formatCurrency(estimate.tripTotal * exchangeRates.EUR, "EUR");
+      qs("#gbp-total").textContent = formatCurrency(estimate.tripTotal * exchangeRates.GBP, "GBP");
+
+      const tbody = qs("#breakdown-body");
+      tbody.innerHTML = Object.entries(estimate.monthlyItems).map(([key, monthly]) => {
+        const trip = Math.round(monthly * estimate.months);
+        const share = estimate.monthlyTotal ? Math.round((monthly / estimate.monthlyTotal) * 100) : 0;
+        return `<tr><td>${labels.category[key]}</td><td>${formatCOP(monthly)}</td><td>${formatCOP(trip)}</td><td>${share}%</td></tr>`;
+      }).join("");
+    }
+
+    function buildShareText() {
+      const estimate = lastEstimate || getEstimate();
+      const cityLabel = labels.city[estimate.city];
+      const styleLabel = labels.lifestyle[estimate.lifestyle];
+      const durationLabel = labels.duration[String(estimate.months)];
+      return [
+        "Ruta Colombia budget estimate",
+        `${cityLabel} - ${styleLabel} - ${durationLabel}`,
+        `Monthly: ${formatCOP(estimate.monthlyTotal)}`,
+        `Trip total: ${formatCOP(estimate.tripTotal)}`,
+        `USD: ${formatCurrency(estimate.tripTotal * exchangeRates.USD, "USD")} | EUR: ${formatCurrency(estimate.tripTotal * exchangeRates.EUR, "EUR")} | GBP: ${formatCurrency(estimate.tripTotal * exchangeRates.GBP, "GBP")}`,
+        window.location.href
+      ].join("\n");
+    }
+
+    async function shareEstimate() {
+      const text = buildShareText();
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: "Ruta Colombia budget estimate", text });
+        } else if (navigator.clipboard) {
+          await navigator.clipboard.writeText(text);
+          showToast("Estimate copied to clipboard");
+        } else {
+          const encoded = encodeURIComponent(text);
+          window.open(`mailto:?subject=Ruta%20Colombia%20budget%20estimate&body=${encoded}`, "_blank", "noopener,noreferrer");
+        }
+      } catch (error) {
+        if (navigator.clipboard) {
+          await navigator.clipboard.writeText(text);
+          showToast("Estimate copied to clipboard");
+        }
+      }
+    }
+
+    function showToast(message) {
+      const toast = qs("#toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    document.querySelectorAll("select").forEach((select) => select.addEventListener("change", render));
+    qs("#share-button").addEventListener("click", shareEstimate);
+    updateRateUi(null);
+    render();
+    setDefaultCurrencyHint();
+    loadRates();
+  </script>
+</body>
+</html>
