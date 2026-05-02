@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useMemo, useState } from 'react';
 
@@ -59,7 +59,7 @@ const styleBenchmarks: Record<
 };
 
 const whatsappHref =
-  'https://wa.me/573195962773?text=Hola%21%20I%27d%20like%20help%20planning%20my%20Colombia%20trip%20%F0%9F%87%A8%F0%9F%87%B4';
+  'https://wa.me/19034598763?text=Hola%21%20I%27d%20like%20help%20planning%20my%20Colombia%20trip%20%F0%9F%87%A8%F0%9F%87%B4';
 
 function formatCop(value: number) {
   return new Intl.NumberFormat('es-CO', {

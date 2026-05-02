@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from 'next';
+﻿import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -108,7 +108,7 @@ export default function RootLayout({
 
         {/* WhatsApp float button */}
         <a
-          href="https://wa.me/573195962773"
+          href="https://wa.me/19034598763"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat with us on WhatsApp"

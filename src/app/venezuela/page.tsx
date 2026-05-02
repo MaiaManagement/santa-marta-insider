@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from '@/components/Link';
 
@@ -25,7 +25,7 @@ export default function VenezuelaPage() {
           <div className="bg-teal-600 bg-opacity-10 border border-teal-500 rounded-lg p-6 mb-8">
             <p className="text-gray-300 mb-3">Get notified when the Venezuela guide launches:</p>
             <a
-              href="https://wa.me/573195962773?text=I'd%20like%20to%20be%20notified%20when%20the%20Venezuela%20guide%20is%20available"
+              href="https://wa.me/19034598763?text=I'd%20like%20to%20be%20notified%20when%20the%20Venezuela%20guide%20is%20available"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-500 transition-colors font-medium"
@@ -66,4 +66,9 @@ export default function VenezuelaPage() {
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
-  
+          Back to Home
+        </Link>
+      </div>
+    </div>
+  );
+}

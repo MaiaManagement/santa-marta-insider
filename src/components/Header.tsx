@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from '@/components/Link';
 import { useState } from 'react';
@@ -67,7 +67,7 @@ export default function Header() {
               About
             </Link>
             <a
-              href="https://wa.me/573195962773?text=Hi%2C%20I%27d%20like%20the%20free%20Colombia%20Travel%20Guide%20from%20Ruta%20Colombia."
+              href="https://wa.me/19034598763?text=Hi%2C%20I%27d%20like%20the%20free%20Colombia%20Travel%20Guide%20from%20Ruta%20Colombia."
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm bg-green-600 text-white px-4 py-1.5 rounded-full hover:bg-green-500 transition-colors font-medium flex items-center gap-2"
@@ -165,7 +165,7 @@ export default function Header() {
             Contact
           </Link>
           <a
-            href="https://wa.me/573195962773?text=Hi%2C%20I%27d%20like%20the%20free%20Colombia%20Travel%20Guide%20from%20Ruta%20Colombia."
+            href="https://wa.me/19034598763?text=Hi%2C%20I%27d%20like%20the%20free%20Colombia%20Travel%20Guide%20from%20Ruta%20Colombia."
             target="_blank"
             rel="noopener noreferrer"
             className="block text-sm text-green-400 px-3 py-3 hover:text-green-300 min-h-[44px] flex items-center font-medium"
