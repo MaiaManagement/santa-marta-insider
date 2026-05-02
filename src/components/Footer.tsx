@@ -92,7 +92,7 @@ export default function Footer() {
                 { name: 'Mapaná Marine', url: 'https://mapana-marine.com' },
                 { name: 'Be Vida Botánicas', url: 'https://be-vida.com' },
                 { name: 'El Sanatorio', url: 'https://el-sanatorio.com' },
-                { name: 'LlevaLleva', url: 'https://llevalleva.co' },
+                { name: 'LlevaLleva', url: 'https://lleva-lleva.com' },
               ].map((brand) => (
                 <li key={brand.name}>
                   <a

@@ -54,7 +54,7 @@ export const categories: Category[] = [
     description: 'Job opportunities, remote work, entrepreneurship, and professional life in Colombia.',
     maia_brand: {
       name: 'LlevaLleva',
-      url: 'https://llevalleva.co',
+      url: 'https://lleva-lleva.com',
       tagline: "Colombia's marketplace — buy, sell, and find work",
       color: '#7c3aed',
       bgColor: '#faf5ff',
@@ -78,7 +78,7 @@ export const categories: Category[] = [
     description: 'Attractions, day trips, experiences, and activities across Colombia.',
     maia_brand: {
       name: 'LlevaLleva',
-      url: 'https://llevalleva.co',
+      url: 'https://lleva-lleva.com',
       tagline: 'Discover local services and experiences in Colombia',
       color: '#7c3aed',
       bgColor: '#faf5ff',
@@ -90,7 +90,7 @@ export const categories: Category[] = [
     description: 'Local news, events, expat groups, and community life across Colombia.',
     maia_brand: {
       name: 'LlevaLleva',
-      url: 'https://llevalleva.co',
+      url: 'https://lleva-lleva.com',
       tagline: 'Connect with your local community on LlevaLleva',
       color: '#7c3aed',
       bgColor: '#faf5ff',

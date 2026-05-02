@@ -112,7 +112,7 @@ export default function RootLayout({
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat with us on WhatsApp"
-          className="fixed bottom-6 right-5 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-lg hover:bg-[#1ebe5e] transition-colors"
+          className="hidden sm:flex fixed bottom-6 right-5 z-50 items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-lg hover:bg-[#1ebe5e] transition-colors"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
