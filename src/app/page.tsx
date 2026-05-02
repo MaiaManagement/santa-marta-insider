@@ -62,6 +62,9 @@ export default function HomePage() {
     <>
       {/* Hero — Medellín primary */}
       <section className="relative bg-gradient-to-br from-violet-950 via-violet-800 to-violet-600 text-white overflow-hidden">
+{/* Hero image - gpt-image-2 */}
+<figure style={{margin:0}}><img src="/images/colombia-hero.png" alt="Colombia panoramic landscape coffee region Cartagena Caribbean" style={{width:'100%',maxHeight:'500px',objectFit:'cover'}} loading="eager" /></figure>
+
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-teal-300 via-transparent to-transparent" />
         <div className="relative max-w-5xl mx-auto px-4 py-20 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 text-sm font-medium text-violet-200 mb-6">
@@ -128,6 +131,9 @@ export default function HomePage() {
 
       {/* City Selector Strip */}
       <section className="bg-gray-950 text-white border-b border-gray-800">
+{/* Hero image - gpt-image-2 */}
+<figure style={{margin:0}}><img src="/images/colombia-hero.png" alt="Colombia panoramic landscape coffee region Cartagena Caribbean" style={{width:'100%',maxHeight:'500px',objectFit:'cover'}} loading="eager" /></figure>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-1 py-3 overflow-x-auto">
             <span className="text-xs text-gray-500 font-semibold uppercase tracking-wider mr-3 shrink-0">Pick a city:</span>
@@ -149,6 +155,9 @@ export default function HomePage() {
 
       {/* Medellín section — carousel + featured articles */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+{/* Hero image - gpt-image-2 */}
+<figure style={{margin:0}}><img src="/images/colombia-hero.png" alt="Colombia panoramic landscape coffee region Cartagena Caribbean" style={{width:'100%',maxHeight:'500px',objectFit:'cover'}} loading="eager" /></figure>
+
         <div className="flex items-center gap-3 mb-5">
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 bg-violet-600 rounded-full" />
@@ -176,6 +185,9 @@ export default function HomePage() {
 
       {/* Categories grid */}
       <section className="bg-white py-12 border-y border-gray-100">
+{/* Hero image - gpt-image-2 */}
+<figure style={{margin:0}}><img src="/images/colombia-hero.png" alt="Colombia panoramic landscape coffee region Cartagena Caribbean" style={{width:'100%',maxHeight:'500px',objectFit:'cover'}} loading="eager" /></figure>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-6">
             <h2 className="font-serif text-2xl font-bold text-gray-900">Explore by Category</h2>
@@ -203,6 +215,9 @@ export default function HomePage() {
 
       {/* Santa Marta section — carousel + featured articles */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+{/* Hero image - gpt-image-2 */}
+<figure style={{margin:0}}><img src="/images/colombia-hero.png" alt="Colombia panoramic landscape coffee region Cartagena Caribbean" style={{width:'100%',maxHeight:'500px',objectFit:'cover'}} loading="eager" /></figure>
+
         <div className="flex items-center gap-3 mb-5">
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 bg-teal-600 rounded-full" />
@@ -230,6 +245,9 @@ export default function HomePage() {
 
       {/* Bogotá section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+{/* Hero image - gpt-image-2 */}
+<figure style={{margin:0}}><img src="/images/colombia-hero.png" alt="Colombia panoramic landscape coffee region Cartagena Caribbean" style={{width:'100%',maxHeight:'500px',objectFit:'cover'}} loading="eager" /></figure>
+
         <div className="flex items-center gap-3 mb-5">
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 bg-blue-700 rounded-full" />
@@ -254,6 +272,9 @@ export default function HomePage() {
 
       {/* Cartagena section */}
       <section className="bg-amber-50/50 py-12">
+{/* Hero image - gpt-image-2 */}
+<figure style={{margin:0}}><img src="/images/colombia-hero.png" alt="Colombia panoramic landscape coffee region Cartagena Caribbean" style={{width:'100%',maxHeight:'500px',objectFit:'cover'}} loading="eager" /></figure>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-5">
             <div className="flex items-center gap-2">
@@ -280,6 +301,9 @@ export default function HomePage() {
 
       {/* More Cities strip */}
       <section className="bg-gray-950 text-white py-10">
+{/* Hero image - gpt-image-2 */}
+<figure style={{margin:0}}><img src="/images/colombia-hero.png" alt="Colombia panoramic landscape coffee region Cartagena Caribbean" style={{width:'100%',maxHeight:'500px',objectFit:'cover'}} loading="eager" /></figure>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-serif text-xl font-bold text-white mb-5">More Colombian Cities</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -304,6 +328,9 @@ export default function HomePage() {
 
       {/* Latest across Colombia */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+{/* Hero image - gpt-image-2 */}
+<figure style={{margin:0}}><img src="/images/colombia-hero.png" alt="Colombia panoramic landscape coffee region Cartagena Caribbean" style={{width:'100%',maxHeight:'500px',objectFit:'cover'}} loading="eager" /></figure>
+
         <div className="flex items-center gap-3 mb-6">
           <h2 className="font-serif text-2xl font-bold text-gray-900">Latest from Colombia</h2>
           <div className="h-px flex-1 bg-gray-200" />
@@ -322,6 +349,9 @@ export default function HomePage() {
 
       {/* About strip */}
       <section className="bg-gray-950 text-white py-14">
+{/* Hero image - gpt-image-2 */}
+<figure style={{margin:0}}><img src="/images/colombia-hero.png" alt="Colombia panoramic landscape coffee region Cartagena Caribbean" style={{width:'100%',maxHeight:'500px',objectFit:'cover'}} loading="eager" /></figure>
+
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="font-serif text-2xl font-bold mb-3">About Ruta Colombia</h2>
           <p className="text-gray-400 leading-relaxed mb-6">
