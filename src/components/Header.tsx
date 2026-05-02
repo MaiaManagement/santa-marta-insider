@@ -66,6 +66,17 @@ export default function Header() {
             >
               About
             </Link>
+            <a
+              href="https://wa.me/573195962773?text=Hi%2C%20I%27d%20like%20the%20free%20Colombia%20Travel%20Guide%20from%20Ruta%20Colombia."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm bg-green-600 text-white px-4 py-1.5 rounded-full hover:bg-green-500 transition-colors font-medium flex items-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-5.031 1.378c-3.055 2.281-3.585 6.308-1.143 9.541 1.432 1.993 3.818 3.222 6.174 3.222 2.27 0 4.41-.896 6.015-2.516 3.325-3.325 3.833-8.585 1.122-12.88-.504-.692-1.223-1.322-2.031-1.793a9.87 9.87 0 00-4.107-.959zm8.717-2.096A11.885 11.885 0 0012.05 0C5.495 0 .16 5.335.16 11.905c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.687 1.448h.005c6.554 0 11.89-5.335 11.89-11.905 0-3.176-1.237-6.174-3.484-8.477z" />
+              </svg>
+              Free Guide
+            </a>
             <Link
               href="/contact/"
               className="text-sm bg-teal-600 text-white px-4 py-1.5 rounded-full hover:bg-teal-500 transition-colors font-medium"
@@ -153,6 +164,15 @@ export default function Header() {
           <Link href="/contact/" className="block text-sm text-gray-400 px-3 py-3 hover:text-white min-h-[44px] flex items-center" onClick={() => setMenuOpen(false)}>
             Contact
           </Link>
+          <a
+            href="https://wa.me/573195962773?text=Hi%2C%20I%27d%20like%20the%20free%20Colombia%20Travel%20Guide%20from%20Ruta%20Colombia."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-sm text-green-400 px-3 py-3 hover:text-green-300 min-h-[44px] flex items-center font-medium"
+            onClick={() => setMenuOpen(false)}
+          >
+            📱 Get Free Colombia Travel Guide (WhatsApp)
+          </a>
         </div>
       )}
     </header>
