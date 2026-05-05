@@ -89,10 +89,10 @@ export function TouristGuideSchema() {
     url: 'https://ruta-colombia.com',
     logo: 'https://ruta-colombia.com/logo.png',
     image: 'https://ruta-colombia.com/og-image.jpg',
-    telephone: '+573195962773',
+    telephone: '+19034598763',
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+573195962773',
+      telephone: '+19034598763',
       contactType: 'customer support',
       availableLanguage: ['English', 'Spanish'],
     },
