@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
       <h1 className="font-serif text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
       <div className="w-16 h-1 bg-teal-500 mb-8 rounded-full" />
       <div className="prose max-w-none text-gray-700 space-y-6">
-        <p className="text-sm text-gray-600">Last updated: April 2026</p>
+        <p className="text-sm text-gray-600">Last updated: May 2026</p>
 
         <h2 className="font-serif text-2xl font-bold text-gray-900 mt-8 mb-4">1. Who We Are</h2>
         <p>
@@ -101,7 +101,8 @@ export default function PrivacyPolicy() {
         </p>
         <p>
           <strong>Maia Management Group S.A.S.</strong><br />
-          Colombia<br />
+          Calle 24 #3-99, Santa Marta, Colombia<br />
+          NIT: 901.862.977-7<br />
           Email: info@ruta-colombia.com
         </p>
 
