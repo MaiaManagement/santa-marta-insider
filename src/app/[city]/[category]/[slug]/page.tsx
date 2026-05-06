@@ -130,6 +130,7 @@ export default async function ArticlePage({ params }: Props) {
             </div>
 
             {/* AdSense top of article */}
+            {/* TODO: Replace "article-top" with real numeric slot ID from https://adsense.google.com */}
             <AdSense slot="article-top" format="fluid" className="mb-8" />
 
             {/* MDX Content */}
@@ -141,6 +142,7 @@ export default async function ArticlePage({ params }: Props) {
             <MaiaAd category={article.category} variant="inline" />
 
             {/* AdSense bottom */}
+            {/* TODO: Replace "article-bottom" with real numeric slot ID from https://adsense.google.com */}
             <AdSense slot="article-bottom" format="auto" className="mt-8" />
 
             {/* Tags */}
@@ -163,6 +165,7 @@ export default async function ArticlePage({ params }: Props) {
           {/* Sidebar */}
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
             <MaiaAd category={article.category} variant="sidebar" />
+            {/* TODO: Replace "sidebar-article" with real numeric slot ID from https://adsense.google.com */}
             <AdSense slot="sidebar-article" format="rectangle" />
 
             {relatedArticles.length > 0 && (

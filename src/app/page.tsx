@@ -125,6 +125,7 @@ export default function HomePage() {
       {/* Top banner ad — below hero */}
       <div className="bg-white border-b border-gray-100 py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* TODO: Replace "homepage-top-banner" with real numeric slot ID from https://adsense.google.com */}
           <AdSense slot="homepage-top-banner" format="auto" />
         </div>
       </div>
@@ -344,6 +345,7 @@ export default function HomePage() {
 
       {/* Mid-page AdSense */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        {/* TODO: Replace "homepage-mid" with real numeric slot ID from https://adsense.google.com */}
         <AdSense slot="homepage-mid" format="auto" />
       </div>
 

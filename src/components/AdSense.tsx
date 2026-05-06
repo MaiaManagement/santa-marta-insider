@@ -3,6 +3,8 @@
 import { useEffect, useRef } from 'react';
 
 interface AdSenseProps {
+  // TODO: slot must be a numeric AdSense ad unit ID (e.g. "1234567890"), NOT a descriptive string.
+  // Get real slot IDs from https://adsense.google.com → Ads → By ad unit → copy the numeric ID.
   slot: string;
   format?: 'auto' | 'fluid' | 'rectangle' | 'vertical' | 'horizontal';
   style?: React.CSSProperties;

@@ -14,7 +14,8 @@ export default function Footer() {
       {/* Ad slot */}
       <div className="bg-gray-900 py-4 text-center border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4">
-          <AdSense slot="footer-leaderboard" format="horizontal" />
+          {/* TODO: Replace "footer-leaderboard" with real numeric slot ID from https://adsense.google.com */}
+        <AdSense slot="footer-leaderboard" format="horizontal" />
         </div>
       </div>
 
