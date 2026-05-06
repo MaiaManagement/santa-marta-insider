@@ -29,7 +29,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = getArticleByCityAndSlug(city, slug);
   if (!article) return {};
   const title = (article.metaTitle || article.title).replace(/\s*\|\s*Ruta Colombia\s*$/, '');
-  const image = 'https://ruta-colombia.com/og-image.jpg';
+  const cityOgImages: Record<string, string> = {
+    medellin: 'og-medellin.jpg',
+    bogota: 'og-bogota.jpg',
+    cartagena: 'og-cartagena.jpg',
+    'santa-marta': 'og-santa-marta.jpg',
+    cali: 'og-cali.jpg',
+    barranquilla: 'og-barranquilla.jpg',
+    bucaramanga: 'og-bucaramanga.jpg',
+  };
+  const ogFile = cityOgImages[city] ?? 'og-image.jpg';
+  const image = `https://ruta-colombia.com/${ogFile}`;
 
   return {
     title,

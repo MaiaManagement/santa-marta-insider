@@ -28,7 +28,7 @@ export function ArticleSchema({ title, description, datePublished, dateModified,
       url: 'https://ruta-colombia.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://ruta-colombia.com/logo.png',
+        url: 'https://ruta-colombia.com/og-image.jpg',
       },
     },
     mainEntityOfPage: {
@@ -87,7 +87,7 @@ export function TouristGuideSchema() {
     description:
       'Your definitive Colombia travel guide and expat resource. Expert local coverage of Medellín, Santa Marta, Bogotá, Cartagena, Cali, Barranquilla, and Bucaramanga — for tourists, expats, digital nomads, and investors.',
     url: 'https://ruta-colombia.com',
-    logo: 'https://ruta-colombia.com/logo.png',
+    logo: 'https://ruta-colombia.com/og-image.jpg',
     image: 'https://ruta-colombia.com/og-image.jpg',
     telephone: '+19034598763',
     contactPoint: {
