@@ -313,179 +313,7 @@
       </div>
     </section>
   </main>
-  
-  <!-- Footer -->
-  tsx
-import Link from 'next/link';
-import AdSense from '@/components/AdSense';
-import { categories } from '@/lib/categories';
-import { cities } from '@/lib/cities';
 
-export default function Footer() {
-  const year = new Date().getFullYear();
-
-  const infrastructure = [
-    { name: 'Legal Infrastructure', url: 'https://maia-legal.com' },
-    { name: 'Talent Management', url: 'https://maia-management.com' },
-    { name: 'Real Estate', url: 'https://maia-realty.com' },
-    { name: 'B2B Procurement', url: 'https://lleva-lleva.com' },
-    { name: 'Corporate Education', url: 'https://maia-masters.com' },
-    { name: 'Private Portfolio', url: '/portfolio' },
-  ];
-
-  return (
-    <footer className="bg-gray-950 text-gray-400 mt-16 border-t border-gray-900">
-      {/* Ad slot */}
-      <div className="bg-gray-900 py-4 text-center border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-4">
-          <AdSense slot="9202460373" format="horizontal" />
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Quiet architecture statement */}
-        <div className="max-w-3xl mb-12">
-          <p className="text-sm text-gray-300 leading-relaxed mb-3">
-            Ruta Colombia operates on the Maia Group infrastructure.
-          </p>
-          <p className="text-xs text-gray-500 leading-relaxed">
-            We provide unified legal, operational, and physical assets for foreign capital, expats, and enterprise clients scaling in Colombia. One ecosystem. Absolute accountability.
-          </p>
-        </div>
-
-        {/* Infrastructure utility links */}
-        <div className="border-t border-gray-900 pt-8 mb-12">
-          <h4 className="text-[11px] text-gray-600 uppercase tracking-[0.2em] mb-5">
-            Infrastructure
-          </h4>
-          <nav className="flex flex-wrap gap-x-6 gap-y-3">
-            {infrastructure.map((item, idx) => {
-              const isExternal = item.url.startsWith('http');
-              const className =
-                'text-xs text-gray-400 hover:text-gray-200 transition-colors tracking-wide';
-              return (
-                <span key={item.name} className="flex items-center gap-x-6">
-                  {isExternal ? (
-                    <a
-                      href={item.url}
-                      className={className}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {item.name}
-                    </a>
-                  ) : (
-                    <Link href={item.url} className={className}>
-                      {item.name}
-                    </Link>
-                  )}
-                  {idx < infrastructure.length - 1 && (
-                    <span className="text-gray-700 text-xs hidden sm:inline">|</span>
-                  )}
-                </span>
-              );
-            })}
-          </nav>
-        </div>
-
-        {/* Editorial nav (subdued) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 border-t border-gray-900 pt-10">
-          <div>
-            <h4 className="text-[11px] text-gray-600 uppercase tracking-[0.2em] mb-4">
-              Cities
-            </h4>
-            <ul className="space-y-2">
-              {cities.map((city) => (
-                <li key={city.slug}>
-                  <Link
-                    href={`/${city.slug}/`}
-                    className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
-                  >
-                    {city.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-[11px] text-gray-600 uppercase tracking-[0.2em] mb-4">
-              Categories
-            </h4>
-            <ul className="space-y-2">
-              {categories.map((cat) => (
-                <li key={cat.slug}>
-                  <Link
-                    href={`/medellin/${cat.slug}/`}
-                    className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
-                  >
-                    {cat.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-[11px] text-gray-600 uppercase tracking-[0.2em] mb-4">
-              Contact
-            </h4>
-            <ul className="space-y-2 text-xs text-gray-500">
-              <li>
-                <Link href="/about/" className="hover:text-gray-300 transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact/" className="hover:text-gray-300 transition-colors">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <a
-                  href="https://the-maia-group.com"
-                  className="hover:text-gray-300 transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  The Maia Group
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Legal line */}
-        <div className="border-t border-gray-900 mt-12 pt-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
-          <p className="text-[11px] text-gray-600 tracking-wide">
-            © {year} Ruta Colombia. A Maia Group property. All rights reserved.
-          </p>
-          <div className="flex flex-wrap gap-x-5 gap-y-2 text-[11px] text-gray-600">
-            <Link href="/privacy/" className="hover:text-gray-400 transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms/" className="hover:text-gray-400 transition-colors">
-              Terms of Use
-            </Link>
-            <button
-              type="button"
-              onClick={() => {
-                if (typeof window !== 'undefined') {
-                  // @ts-expect-error - cookie consent SDK injected at runtime
-                  window.cookieconsent?.openPreferences?.();
-                }
-              }}
-              className="hover:text-gray-400 transition-colors"
-            >
-              Cookie Preferences
-            </button>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-}
-  
   <!-- WhatsApp Floating Button -->
   <a href="https://wa.me/19034598763" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -575,4 +403,12 @@ export default function Footer() {
       manageCookiesLink.addEventListener('click', (e) => {
         e.preventDefault();
         if (window.consentBanner && window.consentBanner.show) {
-          window.consentBa
+          window.consentBanner.show();
+        }
+      });
+    }
+  </script>
+
+
+</body>
+</html>
