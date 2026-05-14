@@ -57,7 +57,7 @@ export default function AboutPage() {
             <Link href="/medellin/">
               <strong>Medellín</strong>
             </Link>{' '}
-            — Colombia's innovation capital and the top destination for expats and digital nomads.
+            — Colombia&apos;s innovation capital and the top destination for expats and digital nomads.
           </li>
           <li>
             <Link href="/santa-marta/">
@@ -72,7 +72,7 @@ export default function AboutPage() {
 
         <h2>The Maia Group ecosystem</h2>
         <p>
-          Ruta Colombia is part of The Maia Group's network of companies operating across Colombia:
+          Ruta Colombia is part of The Maia Group&apos;s network of companies operating across Colombia:
         </p>
         <ul>
           <li>
@@ -94,7 +94,7 @@ export default function AboutPage() {
             — Professional nautical services on the Colombian Caribbean
           </li>
           <li>
-            <a href="https://bevidabotanicas.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://be-vida.com" target="_blank" rel="noopener noreferrer">
               <strong>Be Vida Botánicas</strong>
             </a>{' '}
             — Artisan RTD cocktails made with Colombian botanicals
@@ -103,7 +103,7 @@ export default function AboutPage() {
             <a href="https://lleva-lleva.com" target="_blank" rel="noopener noreferrer">
               <strong>LlevaLleva</strong>
             </a>{' '}
-            — Colombia's classifieds and jobs marketplace
+            — Colombia&apos;s classifieds and jobs marketplace
           </li>
         </ul>
 

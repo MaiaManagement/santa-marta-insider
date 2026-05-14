@@ -235,7 +235,7 @@ export default function BudgetCalculator() {
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#25D366] px-5 py-3 text-sm font-bold text-white shadow-sm hover:bg-[#1ebe5e] transition-colors"
+              className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#075E54] px-5 py-3 text-sm font-bold text-white shadow-sm hover:bg-[#064C44] transition-colors"
             >
               Plan your trip with Maia
             </a>

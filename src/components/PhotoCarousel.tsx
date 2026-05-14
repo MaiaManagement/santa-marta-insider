@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import Image from 'next/image';
 
 export interface CarouselSlide {
   src: string;
@@ -62,13 +63,13 @@ export default function PhotoCarousel({
             i === current ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
-          <img
+          <Image
             src={slide.src}
             alt={slide.alt}
             className="w-full h-full object-cover"
             loading={i === 0 ? 'eager' : 'lazy'}
-            width={1200}
-            height={600}
+            fill
+            sizes="(min-width: 1024px) 768px, 100vw"
           />
         </div>
       ))}

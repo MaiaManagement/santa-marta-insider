@@ -70,7 +70,7 @@ export default function TermsOfService() {
           Before making any decisions based on information from our website, please consult with appropriate professionals (travel agents, medical doctors, lawyers, financial advisors, etc.) as applicable to your situation.
         </p>
         <p>
-          The website is provided on an "as-is" and "as-available" basis. We disclaim all warranties, express or implied, including but not limited to merchantability, fitness for a particular purpose, and non-infringement.
+          The website is provided on an &quot;as-is&quot; and &quot;as-available&quot; basis. We disclaim all warranties, express or implied, including but not limited to merchantability, fitness for a particular purpose, and non-infringement.
         </p>
 
         <h2 className="font-serif text-2xl font-bold text-gray-900 mt-8 mb-4">6. Limitation of Liability</h2>
@@ -93,7 +93,7 @@ export default function TermsOfService() {
 
         <h2 className="font-serif text-2xl font-bold text-gray-900 mt-8 mb-4">9. Modifications to Terms</h2>
         <p>
-          Maia Management Group S.A.S. reserves the right to modify these Terms of Service at any time. We will notify users of significant changes by updating the "Last updated" date at the top of this page. Your continued use of the website following the posting of changes constitutes your acceptance of such changes.
+          Maia Management Group S.A.S. reserves the right to modify these Terms of Service at any time. We will notify users of significant changes by updating the &quot;Last updated&quot; date at the top of this page. Your continued use of the website following the posting of changes constitutes your acceptance of such changes.
         </p>
 
         <h2 className="font-serif text-2xl font-bold text-gray-900 mt-8 mb-4">10. Severability</h2>
