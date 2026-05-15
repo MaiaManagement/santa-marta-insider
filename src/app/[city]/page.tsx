@@ -57,7 +57,7 @@ const cityMeta: Record<string, { title: string; description: string; ogImage?: s
   bucaramanga: {
     title: 'Bucaramanga Travel Guide — Parks, Costs & Expat Life',
     description:
-      'Discover Bucaramanga, Colombia\'s best-kept secret. Best things to do, cost of living, parks, and why expats love this clean, affordable city in the Andes foothills.',
+      'Discover Bucaramanga: parks, cost of living, things to do, and why expats like this clean, affordable city in the Andes foothills.',
     ogImage: 'https://ruta-colombia.com/og-bucaramanga.jpg',
   },
 };
