@@ -97,16 +97,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // Carousel slide data per city (kept close to the page that uses it)
 const citySlides: Record<string, { src: string; alt: string; caption: string }[]> = {
   medellin: [
-    { src: '/images/medellin-valley.jpg', alt: 'Medellín skyline in the Aburrá Valley', caption: 'Medellín — City of Eternal Spring' },
+    { src: '/images/medellin-valley.webp', alt: 'Medellín skyline in the Aburrá Valley', caption: 'Medellín — City of Eternal Spring' },
   ],
   'santa-marta': [
-    { src: '/images/tayrona-beach.jpg', alt: 'Tayrona National Park beach near Santa Marta', caption: 'Tayrona National Park — jungle meets the Caribbean' },
+    { src: '/images/tayrona-beach.webp', alt: 'Tayrona National Park beach near Santa Marta', caption: 'Tayrona National Park — jungle meets the Caribbean' },
   ],
   bogota: [
-    { src: '/images/bogota-street.jpg', alt: 'Bogotá street and mountain skyline', caption: "Bogotá — Colombia's capital at 2,600m" },
+    { src: '/images/bogota-street.webp', alt: 'Bogotá street and mountain skyline', caption: "Bogotá — Colombia's capital at 2,600m" },
   ],
   cartagena: [
-    { src: '/images/cartagena-street.jpg', alt: 'Cartagena old town colonial street', caption: 'Cartagena — a UNESCO World Heritage walled city' },
+    { src: '/images/cartagena-street.webp', alt: 'Cartagena old town colonial street', caption: 'Cartagena — a UNESCO World Heritage walled city' },
   ],
 };
 

@@ -34,19 +34,19 @@ export const metadata: Metadata = {
 };
 
 const medellinSlides = [
-  { src: '/images/medellin-valley.jpg', alt: 'Medellín skyline in the Aburrá Valley', caption: 'Medellín — City of Eternal Spring' },
+  { src: '/images/medellin-valley.webp', alt: 'Medellín skyline in the Aburrá Valley', caption: 'Medellín — City of Eternal Spring' },
 ];
 
 const santaMartaSlides = [
-  { src: '/images/tayrona-beach.jpg', alt: 'Tayrona National Park beach near Santa Marta', caption: 'Tayrona National Park — jungle meets the Caribbean' },
+  { src: '/images/tayrona-beach.webp', alt: 'Tayrona National Park beach near Santa Marta', caption: 'Tayrona National Park — jungle meets the Caribbean' },
 ];
 
 const bogotaSlides = [
-  { src: '/images/bogota-street.jpg', alt: 'Bogotá street and mountain skyline', caption: 'Bogotá — Colombia\'s capital at 2,600m' },
+  { src: '/images/bogota-street.webp', alt: 'Bogotá street and mountain skyline', caption: 'Bogotá — Colombia\'s capital at 2,600m' },
 ];
 
 const cartagenaSlides = [
-  { src: '/images/cartagena-street.jpg', alt: 'Cartagena old town colonial street', caption: 'Cartagena — a UNESCO World Heritage walled city' },
+  { src: '/images/cartagena-street.webp', alt: 'Cartagena old town colonial street', caption: 'Cartagena — a UNESCO World Heritage walled city' },
 ];
 
 export default function HomePage() {
@@ -65,7 +65,7 @@ export default function HomePage() {
       <section className="relative bg-gradient-to-br from-violet-950 via-violet-800 to-violet-600 text-white overflow-hidden">
         <figure className="relative m-0 h-[220px] w-full overflow-hidden sm:h-[360px] lg:h-[500px]">
           <Image
-            src="/images/colombia-hero.webp"
+            src="/images/colombia-hero-optimized.webp"
             alt="Colombia panoramic landscape coffee region Cartagena Caribbean"
             className="object-cover"
             priority
