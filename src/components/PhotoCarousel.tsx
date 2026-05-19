@@ -67,7 +67,7 @@ export default function PhotoCarousel({
             src={slide.src}
             alt={slide.alt}
             className="w-full h-full object-cover"
-            loading={i === 0 ? 'eager' : 'lazy'}
+            loading="lazy"
             fill
             sizes="(min-width: 1024px) 768px, 100vw"
           />
